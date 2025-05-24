@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
+<!-- Firebase SDK -->
+<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js "></script>
+<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database-compat.js "></script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>TESA TV Servisi - Profesyonel TV Tamir Hizmetleri</title>
@@ -631,62 +634,64 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <div class="container mx-auto px-4">
     <div class="text-center mb-8" data-aos="fade-up">
       <h2 class="text-2xl font-bold text-gray-800 dark:text-white mb-3">Hizmet Verdiğimiz Bölgeler</h2>
-      <p class="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">İstanbul'un tüm ilçelerinde yerinde servis hizmeti sunuyoruz.</p>
+      <p class="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">Sinop ve Samsun ilçelerinde yerinde servis hizmeti sunuyoruz.</p>
     </div>
-    <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4 max-w-4xl mx-auto">
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 max-w-4xl mx-auto">
       <div class="text-center p-2" data-aos="fade-up" data-aos-delay="100">
-        <p class="text-gray-700 dark:text-gray-300">Kadıköy</p>
+        <p class="text-gray-700 dark:text-gray-300">Ayancık</p>
       </div>
       <div class="text-center p-2" data-aos="fade-up" data-aos-delay="150">
-        <p class="text-gray-700 dark:text-gray-300">Beşiktaş</p>
+        <p class="text-gray-700 dark:text-gray-300">Boyabat</p>
       </div>
       <div class="text-center p-2" data-aos="fade-up" data-aos-delay="200">
-        <p class="text-gray-700 dark:text-gray-300">Şişli</p>
+        <p class="text-gray-700 dark:text-gray-300">Durağan</p>
       </div>
       <div class="text-center p-2" data-aos="fade-up" data-aos-delay="250">
-        <p class="text-gray-700 dark:text-gray-300">Ataşehir</p>
+        <p class="text-gray-700 dark:text-gray-300">Erfelek</p>
       </div>
       <div class="text-center p-2" data-aos="fade-up" data-aos-delay="300">
-        <p class="text-gray-700 dark:text-gray-300">Maltepe</p>
+        <p class="text-gray-700 dark:text-gray-300">Gerze</p>
       </div>
       <div class="text-center p-2" data-aos="fade-up" data-aos-delay="350">
-        <p class="text-gray-700 dark:text-gray-300">Üsküdar</p>
+        <p class="text-gray-700 dark:text-gray-300">Saraydüzü</p>
       </div>
-      <div class="text-center p-2" data-aos="fade-up" data-aos-delay="100">
-        <p class="text-gray-700 dark:text-gray-300">Beylikdüzü</p>
+      <div class="text-center p-2" data-aos="fade-up" data-aos-delay="400">
+        <p class="text-gray-700 dark:text-gray-300">Türkeli</p>
       </div>
-      <div class="text-center p-2" data-aos="fade-up" data-aos-delay="150">
-        <p class="text-gray-700 dark:text-gray-300">Bakırköy</p>
+      <div class="text-center p-2" data-aos="fade-up" data-aos-delay="450">
+        <p class="text-gray-700 dark:text-gray-300">Ulus</p>
       </div>
-      <div class="text-center p-2" data-aos="fade-up" data-aos-delay="200">
-        <p class="text-gray-700 dark:text-gray-300">Bahçelievler</p>
+      <div class="text-center p-2" data-aos="fade-up" data-aos-delay="500">
+        <p class="text-gray-700 dark:text-gray-300">İncebuğday</p>
       </div>
-      <div class="text-center p-2" data-aos="fade-up" data-aos-delay="250">
-        <p class="text-gray-700 dark:text-gray-300">Beyoğlu</p>
+      <div class="text-center p-2" data-aos="fade-up" data-aos-delay="550">
+        <p class="text-gray-700 dark:text-gray-300">Merkez (Sinop)</p>
       </div>
-      <div class="text-center p-2" data-aos="fade-up" data-aos-delay="300">
-        <p class="text-gray-700 dark:text-gray-300">Sarıyer</p>
+      <div class="text-center p-2" data-aos="fade-up" data-aos-delay="600">
+        <p class="text-gray-700 dark:text-gray-300">Samsun</p>
       </div>
-      <div class="text-center p-2" data-aos="fade-up" data-aos-delay="350">
-        <p class="text-gray-700 dark:text-gray-300">Kartal</p>
-      </div>
-      <div class="text-center p-2" data-aos="fade-up" data-aos-delay="100">
-        <p class="text-gray-700 dark:text-gray-300">Pendik</p>
-      </div>
-      <div class="text-center p-2" data-aos="fade-up" data-aos-delay="150">
-        <p class="text-gray-700 dark:text-gray-300">Tuzla</p>
-      </div>
-      <div class="text-center p-2" data-aos="fade-up" data-aos-delay="200">
-        <p class="text-gray-700 dark:text-gray-300">Esenyurt</p>
-      </div>
-      <div class="text-center p-2" data-aos="fade-up" data-aos-delay="250">
-        <p class="text-gray-700 dark:text-gray-300">Avcılar</p>
-      </div>
-      <div class="text-center p-2" data-aos="fade-up" data-aos-delay="300">
-        <p class="text-gray-700 dark:text-gray-300">Başakşehir</p>
-      </div>
-      <div class="text-center p-2" data-aos="fade-up" data-aos-delay="350">
-        <p class="text-gray-700 dark:text-gray-300">Ümraniye</p>
+    </div>
+  </div>
+</section>
+
+<!-- Gerçek Zamanlı Tamir Takip -->
+<section id="repair-tracking" class="py-16 bg-white dark:bg-dark-800">
+  <div class="container mx-auto px-4">
+    <div class="text-center mb-12" data-aos="fade-up">
+      <h2 class="text-3xl font-bold text-gray-800 dark:text-white mb-3">Gerçek Zamanlı Tamir Takibi</h2>
+      <p class="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">Servis numaranızla tamir durumunuzu takip edin.</p>
+    </div>
+    <div class="max-w-md mx-auto bg-white dark:bg-dark-700 p-6 rounded shadow-md" data-aos="fade-up">
+      <form id="trackingForm">
+        <div class="mb-4">
+          <label for="repairId" class="block text-gray-700 dark:text-gray-300 mb-2">Servis Numarası veya Telefon Numarası</label>
+          <input type="text" id="repairId" class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 dark:bg-dark-800 rounded focus:border-primary transition-colors" required placeholder="Örnek: 123456 veya 5442605757">
+        </div>
+        <button type="submit" class="w-full bg-primary hover:bg-primary/90 text-white font-medium py-3 px-4 rounded-button whitespace-nowrap transition-colors">Durumu Kontrol Et</button>
+      </form>
+      <div id="trackingResult" class="mt-6 text-gray-700 dark:text-gray-300 hidden">
+        <h3 class="font-semibold mb-2">Tamir Durumu:</h3>
+        <p id="trackingStatus">Beklemede...</p>
       </div>
     </div>
   </div>
