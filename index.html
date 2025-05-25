@@ -1120,4 +1120,81 @@ function updateStatusUI(status, notes) {
 }
 </script>
 </body>
+  <!-- Tamir Takip Formu (Zaten var olan kodu bu şekilde güncelleyin) -->
+<div class="max-w-md mx-auto bg-white dark:bg-dark-700 p-6 rounded shadow-md" data-aos="fade-up">
+  <form id="trackingForm">
+    <div class="mb-4">
+      <label for="repairId" class="block text-gray-700 dark:text-gray-300 mb-2">Servis Numarası veya Telefon Numarası</label>
+      <input type="text" id="repairId" class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 dark:bg-dark-800 rounded focus:border-primary transition-colors" required placeholder="Örnek: 123456 veya 5442605757">
+    </div>
+    <button type="submit" class="w-full bg-primary hover:bg-primary/90 text-white font-medium py-3 px-4 rounded-button whitespace-nowrap transition-colors">Durumu Kontrol Et</button>
+  </form>
+  <div id="trackingResult" class="mt-6 text-gray-700 dark:text-gray-300 hidden">
+    <h3 class="font-semibold mb-2">Tamir Durumu:</h3>
+    <p id="trackingStatus">Beklemede...</p>
+  </div>
+  <div id="loader" class="mt-4 text-center hidden">
+    <div class="inline-block animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-primary"></div>
+    <p class="mt-2">Yükleniyor...</p>
+  </div>
+</div>
+
+<!-- Firebase ve Takip Sistemi JavaScript Kodları -->
+<script>
+// Firebase yapılandırma (Zaten var olan kodu bu şekilde güncelleyin)
+const firebaseConfig = {
+  apiKey: "AIzaSyCK9cnO9KXCF5gtZSI8O5vSkigPQy11rs0",
+  authDomain: "tesatv-tamirtakip.firebaseapp.com",
+  projectId: "tesatv-tamirtakip",
+  storageBucket: "tesatv-tamirtakip.appspot.com",
+  messagingSenderId: "545625124360",
+  appId: "1:545625124360:web:e7bec3332ce3924eeaebbd",
+  measurementId: "G-SVNF1E49QK"
+};
+
+// Firebase başlatma
+const app = firebase.initializeApp(firebaseConfig);
+const database = firebase.database();
+
+// Form gönderimini işleme
+document.getElementById('trackingForm').addEventListener('submit', function(e) {
+  e.preventDefault(); // Sayfanın yenilenmesini engelle
+  const repairId = document.getElementById('repairId').value.trim();
+  
+  if (!repairId) {
+    alert("Lütfen servis numarası giriniz");
+    return;
+  }
+
+  // Yükleniyor göstergesini göster
+  document.getElementById('loader').classList.remove('hidden');
+  document.getElementById('trackingResult').classList.add('hidden');
+
+  // Firebase'den veriyi çek
+  database.ref('repairs/' + repairId).once('value')
+    .then((snapshot) => {
+      const trackingResult = document.getElementById('trackingResult');
+      const trackingStatus = document.getElementById('trackingStatus');
+      
+      if (snapshot.exists()) {
+        const repairData = snapshot.val();
+        trackingStatus.innerHTML = `
+          <strong>Durum:</strong> ${repairData.status}<br>
+          <strong>Not:</strong> ${repairData.notes || "Not bulunmamaktadır"}<br>
+          <strong>Tarih:</strong> ${repairData.date || "Belirtilmemiş"}
+        `;
+        trackingResult.classList.remove('hidden');
+      } else {
+        trackingStatus.textContent = "Bu servis numarasıyla kayıt bulunamadı";
+        trackingResult.classList.remove('hidden');
+      }
+    })
+    .catch((error) => {
+      alert("Hata oluştu: " + error.message);
+    })
+    .finally(() => {
+      document.getElementById('loader').classList.add('hidden');
+    });
+});
+</script>
 </html>
