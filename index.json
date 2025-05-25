@@ -1,8 +1,19 @@
-{
-  "repair_001": {
-    "status": "repair",
-    "notes": "LED panel değişimi gerekiyor",
-    "phone": "+905442605757",
-    "createdAt": 1719394200
+const functions = require('firebase-functions');
+const twilio = require('twilio');
+
+const accountSid = 'ACa7c05b3027183ca67dfd2c889446871e';
+const authToken = 'bc33b265c21e77ac80865674a4ed1254';
+const client = twilio(accountSid, authToken);
+
+exports.sendRepairStatusSMS = functions.https.onCall(async (data, context) => {
+  try {
+    await client.messages.create({
+      body: `Tamir durumu: ${data.status}`,
+      from: '+18383683513',
+      to: `+90${data.phone}`
+    });
+    return { success: true };
+  } catch (error) {
+    return { success: false, error: error.message };
   }
-}
+});
