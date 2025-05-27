@@ -1,223 +1,212 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-<!-- Firebase SDK -->
-<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js "></script>
-<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database-compat.js "></script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TESA TV Servisi - Profesyonel TV Tamir Hizmetleri</title>
-<meta name="description" content="Profesyonel TV tamir hizmetleri. Samsung, LG, Sony ve tüm markalarda TV tamiri. LED değişimi, anakart tamiri, panel değişimi ve daha fazlası.">
-<meta name="keywords" content="TV tamiri, televizyon tamiri, LED değişimi, anakart tamiri, Sinop TV servisi">
-<!-- Schema.org markup for Google -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org ",
-  "@type": "LocalBusiness",
-  "name": "Tesa TV Servisi",
-  "image": "logo.png",
-  "@id": "https://tesatv.com #business",
-  "url": "https://tesatv.com ",
-  "telephone": "+905442605757",
-  "priceRange": "$$",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "Camikebir, Alaaddin Keykubat Cd. No:15",
-    "addressLocality": "Sinop",
-    "addressRegion": "TR",
-    "postalCode": "57000",
-    "addressCountry": "TR"
-  },
-  "openingHoursSpecification": {
-    "@type": "OpeningHoursSpecification",
-    "dayOfWeek": [
-      "Monday",
-      "Tuesday",
-      "Wednesday",
-      "Thursday",
-      "Friday",
-      "Saturday"
-    ],
-    "opens": "08:30",
-    "closes": "19:30"
-  },
-  "aggregateRating": {
-    "@type": "AggregateRating",
-    "ratingValue": "4.9",
-    "reviewCount": "87"
-  }
-}
-</script>
-<!-- Styles and Scripts -->
-<script src="https://cdn.tailwindcss.com/3.4.16 "></script>
-<script>
-  tailwind.config = {
-    darkMode: 'class',
-    theme: {
-      extend: {
-        colors: {
-          primary: '#0056b3',
-          secondary: '#ff6b00',
-          dark: '#1e293b'
-        },
-        borderRadius: {
-          'none': '0px',
-          'sm': '4px',
-          DEFAULT: '8px',
-          'md': '12px',
-          'lg': '16px',
-          'xl': '20px',
-          '2xl': '24px',
-          '3xl': '32px',
-          'full': '9999px',
-          'button': '8px'
-        }
-      }
-    }
-  }
-</script>
-<link rel="preconnect" href="https://fonts.googleapis.com ">
-<link rel="preconnect" href="https://fonts.gstatic.com " crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap " rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Poppins :wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css ">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css ">
-<link href="https://unpkg.com/aos @2.3.1/dist/aos.css" rel="stylesheet">
+<title>TESA TV - Profesyonel TV Tamir Servisi</title>
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<script>tailwind.config={theme:{extend:{colors:{primary:'#1e40af',secondary:'#f59e0b'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
 <style>
-  body {
-    font-family: 'Poppins', sans-serif;
-    @apply bg-gray-50 dark:bg-dark dark:text-gray-200;
-  }
-  .hero-section {
-    min-height: 600px;
-  }
-  .hero-video {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: 0;
-  }
-  .hero-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(to right, rgba(0, 86, 179, 0.8) 0%, rgba(0, 86, 179, 0.5) 100%);
-    z-index: 1;
-  }
-  input:focus, textarea:focus, select:focus {
-    outline: none;
-    @apply ring-2 ring-primary/50;
-  }
-  .pacifico {
-    font-family: 'Pacifico', cursive;
-  }
-  .rotate-180 {
-    transform: rotate(180deg);
-  }
-  .brand-logo {
-    @apply h-12 grayscale hover:grayscale-0 transition-all duration-300 opacity-80 hover:opacity-100;
-  }
-  .process-step {
-    @apply transition-all duration-300 hover:scale-105;
-  }
-  .dark .dark\:bg-dark-800 {
-    background-color: #1e293b;
-  }
-  .dark .dark\:border-gray-700 {
-    border-color: #334155;
-  }
+:where([class^="ri-"])::before { content: "\f3c2"; }
+body {
+font-family: 'Poppins', sans-serif;
+}
+@keyframes ambientLight {
+0% { background-position: 0% 50%; }
+50% { background-position: 100% 50%; }
+100% { background-position: 0% 50%; }
+}
+.hero-section {
+background-image: url('https://readdy.ai/api/search-image?query=professional%2520tv%2520repair%2520workshop%2520with%2520modern%2520equipment%2520and%2520tools%252C%2520clean%2520and%2520organized%2520workspace%252C%2520technicians%2520working%2520on%2520large%2520screen%2520televisions%252C%2520high-tech%2520diagnostic%2520tools%252C%2520soft%2520lighting%252C%2520professional%2520atmosphere%252C%2520blue%2520accents&width=1920&height=800&seq=1&orientation=landscape');
+background-size: cover;
+background-position: center;
+position: relative;
+overflow: hidden;
+}
+.hero-section::before {
+content: '';
+position: absolute;
+inset: -20px;
+background: linear-gradient(-45deg, #1e40af, #3b82f6, #22c55e, #14b8a6);
+background-size: 400% 400%;
+animation: ambientLight 15s ease infinite;
+opacity: 0.15;
+z-index: 0;
+}
+.hero-overlay {
+background: linear-gradient(90deg, rgba(255,255,255,0.97) 0%, rgba(255,255,255,0.95) 50%, rgba(255,255,255,0.8) 100%);
+position: relative;
+z-index: 1;
+}
+input:focus, textarea:focus, select:focus {
+outline: none;
+border-color: #1e40af;
+}
+.custom-checkbox {
+position: relative;
+padding-left: 30px;
+cursor: pointer;
+user-select: none;
+}
+.custom-checkbox input {
+position: absolute;
+opacity: 0;
+cursor: pointer;
+height: 0;
+width: 0;
+}
+.checkmark {
+position: absolute;
+top: 0;
+left: 0;
+height: 20px;
+width: 20px;
+background-color: #fff;
+border: 2px solid #e2e8f0;
+border-radius: 4px;
+}
+.custom-checkbox:hover input ~ .checkmark {
+border-color: #1e40af;
+}
+.custom-checkbox input:checked ~ .checkmark {
+background-color: #1e40af;
+border-color: #1e40af;
+}
+.checkmark:after {
+content: "";
+position: absolute;
+display: none;
+}
+.custom-checkbox input:checked ~ .checkmark:after {
+display: block;
+}
+.custom-checkbox .checkmark:after {
+left: 6px;
+top: 2px;
+width: 5px;
+height: 10px;
+border: solid white;
+border-width: 0 2px 2px 0;
+transform: rotate(45deg);
+}
+.switch {
+position: relative;
+display: inline-block;
+width: 50px;
+height: 24px;
+}
+.switch input {
+opacity: 0;
+width: 0;
+height: 0;
+}
+.slider {
+position: absolute;
+cursor: pointer;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+background-color: #e2e8f0;
+transition: .4s;
+border-radius: 34px;
+}
+.slider:before {
+position: absolute;
+content: "";
+height: 18px;
+width: 18px;
+left: 3px;
+bottom: 3px;
+background-color: white;
+transition: .4s;
+border-radius: 50%;
+}
+input:checked + .slider {
+background-color: #1e40af;
+}
+input:checked + .slider:before {
+transform: translateX(26px);
+}
+.tab-active {
+color: #1e40af;
+border-bottom: 2px solid #1e40af;
+}
 </style>
 </head>
-<body class="bg-gray-50 dark:bg-dark">
-<!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id= '+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-XXXXXX');</script>
-<!-- End Google Tag Manager -->
-<!-- WhatsApp Butonu -->
-<div class="fixed bottom-6 right-6 z-50">
-  <a href="https://wa.me/905442605757 " class="bg-green-500 hover:bg-green-600 text-white rounded-full p-4 shadow-lg flex items-center justify-center transition-colors animate-bounce">
-    <i class="ri-whatsapp-fill ri-2x"></i>
-  </a>
-</div>
-<!-- Theme Toggle -->
-<div class="fixed bottom-6 left-6 z-50">
-  <button id="themeToggle" class="bg-white dark:bg-gray-700 shadow-lg rounded-full p-3 flex items-center justify-center transition-colors">
-    <i class="ri-sun-line dark:hidden text-gray-700"></i>
-    <i class="ri-moon-line hidden dark:block text-white"></i>
-  </button>
-</div>
+<body class="bg-gray-50">
 <!-- Header -->
-<header class="bg-white dark:bg-dark-800 shadow-sm sticky top-0 z-40">
-  <div class="container mx-auto px-4 py-3 flex justify-between items-center">
-    <div class="flex items-center">
-      <h1 class="text-2xl pacifico text-primary dark:text-white">TesaTV</h1>
-    </div>
-    <div class="hidden md:flex items-center space-x-6">
-      <a href="#top" id="homeLink" class="text-gray-700 dark:text-gray-300 hover:text-primary font-medium">Anasayfa</a>
-      <a href="#services" class="text-gray-700 dark:text-gray-300 hover:text-primary font-medium">Hizmetlerimiz</a>
-      <a href="#why-us" class="text-gray-700 dark:text-gray-300 hover:text-primary font-medium">Neden Biz</a>
-      <a href="#appointment" class="text-gray-700 dark:text-gray-300 hover:text-primary font-medium">Online Randevu</a>
-      <a href="#contact" class="text-gray-700 dark:text-gray-300 hover:text-primary font-medium">İletişim</a>
-    </div>
-    <div class="flex items-center">
-      <div class="hidden md:flex items-center text-primary dark:text-white">
-        <div class="w-10 h-10 flex items-center justify-center">
-          <i class="ri-phone-fill ri-lg"></i>
-        </div>
-        <span class="font-semibold">0544 260 57 57</span>
-      </div>
-      <button class="md:hidden w-10 h-10 flex items-center justify-center text-gray-700 dark:text-white" id="mobileMenuButton">
-        <i class="ri-menu-line ri-lg"></i>
-      </button>
-    </div>
-  </div>
-  <!-- Mobile Menu -->
-  <div class="md:hidden hidden bg-white dark:bg-dark-800 w-full absolute left-0 shadow-md" id="mobileMenu">
-    <div class="container mx-auto px-4 py-3 flex flex-col space-y-3">
-      <a href="#top" class="text-gray-700 dark:text-gray-300 hover:text-primary font-medium py-2">Anasayfa</a>
-      <a href="#services" class="text-gray-700 dark:text-gray-300 hover:text-primary font-medium py-2">Hizmetlerimiz</a>
-      <a href="#why-us" class="text-gray-700 dark:text-gray-300 hover:text-primary font-medium py-2">Neden Biz</a>
-      <a href="#appointment" class="text-gray-700 dark:text-gray-300 hover:text-primary font-medium py-2">Online Randevu</a>
-      <a href="#contact" class="text-gray-700 dark:text-gray-300 hover:text-primary font-medium py-2">İletişim</a>
-      <div class="flex items-center text-primary dark:text-white pt-2">
-        <div class="w-10 h-10 flex items-center justify-center">
-          <i class="ri-phone-fill ri-lg"></i>
-        </div>
-        <span class="font-semibold">0544 260 57 57</span>
-      </div>
-    </div>
-  </div>
+<header class="bg-white shadow-md sticky top-0 z-50">
+<div class="container mx-auto px-4 py-3">
+<div class="flex justify-between items-center">
+<div class="flex items-center">
+<img src="https://static.readdy.ai/image/d53e346a01f4c1360ce4287dea3ba429/03d41e9ae333a38fff7278284ade8d35.png" alt="TESA TV Logo" class="h-12">
+</div>
+<div class="hidden md:flex items-center space-x-8">
+<a href="#" class="text-gray-800 hover:text-primary font-medium">Anasayfa</a>
+<a href="#services" class="text-gray-800 hover:text-primary font-medium">Hizmetler</a>
+<a href="#appointment" class="text-gray-800 hover:text-primary font-medium">Randevu</a>
+<a href="#tracking" class="text-gray-800 hover:text-primary font-medium">Tamir Takibi</a>
+<a href="#contact" class="text-gray-800 hover:text-primary font-medium">İletişim</a>
+</div>
+<div class="hidden md:flex items-center space-x-4">
+<div class="flex items-center">
+<div class="w-8 h-8 flex items-center justify-center text-primary">
+<i class="ri-phone-line ri-lg"></i>
+</div>
+<span class="text-sm font-medium">+90 544 260 57 57</span>
+</div>
+<a href="#" class="bg-primary text-white px-4 py-2 !rounded-button whitespace-nowrap">Randevu Al</a>
+</div>
+<div class="md:hidden flex items-center">
+<button class="text-gray-800 focus:outline-none">
+<div class="w-8 h-8 flex items-center justify-center">
+<i class="ri-menu-line ri-lg"></i>
+</div>
+</button>
+</div>
+</div>
+</div>
 </header>
 <!-- Hero Section -->
-<section class="hero-section relative">
-  <div class="hero-overlay"></div>
-  <video autoplay loop muted playsinline class="hero-video">
-    <source src="banner.mp4" type="video/mp4">
-    <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-4.0.3 " alt="TV Tamir Hizmeti">
-  </video>
-
-  <!-- Yeni eklenen banner -->
- <div class="container mx-auto px-4 py-20 md:py-32 relative z-10">
-    <div class="max-w-xl text-white" data-aos="fade-right">
-      <h1 class="text-4xl md:text-5xl font-bold mb-4">Profesyonel TV Tamir Servisi</h1>
-      <h2 class="text-xl md:text-2xl mb-6">Her Marka ve Modelde Uzman Çözümler</h2>
-      <p class="mb-8 text-white/90">LED değişimi, anakart tamiri, panel değişimi, MMC bellek onarımı dahil tüm TV arızalarında 15 yıllık deneyimimizle Samsung, LG, Sony ve diğer tüm markalarda ekonomik ve garantili tamir hizmeti sunuyoruz.</p>
+<section class="hero-section relative h-screen min-h-[600px] overflow-hidden">
+  <!-- Video Background -->
+  <div class="absolute inset-0 z-0">
+    <video autoplay loop muted playsinline class="w-full h-full object-cover">
+      <source src="banner.mp4" type="video/mp4">
+      <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-4.0.3" alt="TV Tamir Hizmeti" class="w-full h-full object-cover">
+    </video>
+  </div>
+  
+  <!-- Enhanced Dark Overlay for Better Text Readability -->
+  <div class="absolute inset-0 bg-black/60 z-1"></div>
+  
+  <!-- Ambient Light Effect (optional) -->
+  <div class="absolute inset-0 z-1 opacity-20">
+    <div class="absolute inset-0 bg-gradient-to-br from-primary to-secondary animate-pulse mix-blend-overlay"></div>
+  </div>
+  
+  <!-- Content Container -->
+  <div class="container mx-auto px-4 h-full flex items-center relative z-10">
+    <div class="max-w-xl">
+      <h1 class="text-4xl md:text-5xl font-bold mb-4 text-white drop-shadow-lg">Profesyonel TV Tamir Servisi</h1>
+      <h2 class="text-xl md:text-2xl mb-6 text-gray-100 font-medium drop-shadow-md">Her Marka ve Modelde Uzman Çözümler</h2>
+      <p class="mb-8 text-gray-200 leading-relaxed drop-shadow-sm">
+        LED değişimi, anakart tamiri, panel değişimi, MMC bellek onarımı dahil tüm TV arızalarında 15 yıllık deneyimimizle Samsung, LG, Sony ve diğer tüm markalarda ekonomik ve garantili tamir hizmeti sunuyoruz.
+      </p>
       <div class="flex flex-col sm:flex-row gap-4">
-        <a href="tel:05442605757" class="bg-secondary hover:bg-secondary/90 text-white font-medium py-3 px-6 rounded-button flex items-center justify-center whitespace-nowrap transition-colors">
+        <a href="tel:05442605757" class="bg-secondary hover:bg-secondary/90 text-white font-medium py-3 px-6 rounded-button flex items-center justify-center whitespace-nowrap transition-colors shadow-lg">
           <div class="w-6 h-6 flex items-center justify-center mr-2">
             <i class="ri-phone-fill"></i>
           </div>
           Hemen Ara
         </a>
-        <a href="#appointment" class="bg-white hover:bg-gray-100 text-primary font-medium py-3 px-6 rounded-button flex items-center justify-center whitespace-nowrap transition-colors">
+        <a href="#appointment" class="bg-white hover:bg-gray-100 text-primary font-medium py-3 px-6 rounded-button flex items-center justify-center whitespace-nowrap transition-colors shadow-lg">
           <div class="w-6 h-6 flex items-center justify-center mr-2">
             <i class="ri-calendar-fill"></i>
           </div>
@@ -226,975 +215,810 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       </div>
     </div>
   </div>
-  <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-b from-transparent to-black/70 py-8 md:py-12">
+  
+  <!-- Bottom Banner -->
+  <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent py-8 md:py-12 z-10">
     <div class="container mx-auto px-4 flex flex-col md:flex-row items-center justify-between">
       <div class="mb-4 md:mb-0">
-        <img src="tesa_tv_logo.png" alt="Tesa TV Logo" class="h-24 md:h-32 w-auto">
+        <img src="tesa_tv_logo.png" alt="Tesa TV Logo" class="h-20 md:h-28 w-auto brightness-0 invert">
       </div>
       <div class="text-white text-center md:text-right">
-        <h3 class="text-xl md:text-2xl font-bold mb-2">TV Panel Onarım</h3>
+        <h3 class="text-xl md:text-2xl font-bold mb-2 drop-shadow-md">TV Panel Onarım</h3>
         <p class="text-lg md:text-xl mb-4">
-          <span class="bg-yellow-400 text-black px-2 py-1 rounded">0368 261 57 70</span> · 
-          <span class="bg-yellow-400 text-black px-2 py-1 rounded">0544 260 57 57</span>
+          <span class="bg-yellow-400 text-black px-3 py-1.5 rounded-md font-medium shadow">0368 261 57 70</span> 
+          <span class="mx-2 text-gray-300">|</span>
+          <span class="bg-yellow-400 text-black px-3 py-1.5 rounded-md font-medium shadow">0544 260 57 57</span>
         </p>
         <div class="flex items-center justify-center md:justify-end">
-          <img src="sinop-manzarasi.jpg" alt="Sinop" class="h-8 mr-2">
-          <span class="uppercase tracking-wider">Sinop</span>
+          <img src="sinop-manzarasi.jpg" alt="Sinop" class="h-8 mr-2 rounded-full border border-white/20">
+          <span class="uppercase tracking-wider text-gray-200">Sinop</span>
         </div>
       </div>
     </div>
   </div>
 </section>
 <!-- Services Section -->
-<section id="services" class="py-16 bg-white dark:bg-dark-800">
-  <div class="container mx-auto px-4">
-    <div class="text-center mb-12" data-aos="fade-up">
-      <h2 class="text-3xl font-bold text-gray-800 dark:text-white mb-3">Hizmetlerimiz</h2>
-      <p class="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">Tüm TV markalarında profesyonel tamir ve bakım hizmetleri sunuyoruz. Uzman ekibimiz her türlü arızaya çözüm üretir.</p>
-    </div>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-      <!-- Service 1 -->
-      <div class="bg-white dark:bg-dark-700 p-6 rounded shadow-md hover:shadow-lg transition-shadow border border-gray-100 dark:border-gray-700" data-aos="fade-up" data-aos-delay="100">
-        <div class="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mb-4">
-          <div class="w-8 h-8 flex items-center justify-center text-primary">
-            <i class="ri-lightbulb-line ri-lg"></i>
-          </div>
-        </div>
-        <h3 class="text-xl font-semibold mb-3 dark:text-white">LED Arka Aydınlatma Tamiri</h3>
-        <p class="text-gray-600 dark:text-gray-300">Ekranınız karanlık mı? LED şeritlerinin değişimi ve arka aydınlatma sorunlarını uygun fiyatlarla çözüyoruz.</p>
-      </div>
-      <!-- Service 2 -->
-      <div class="bg-white dark:bg-dark-700 p-6 rounded shadow-md hover:shadow-lg transition-shadow border border-gray-100 dark:border-gray-700" data-aos="fade-up" data-aos-delay="200">
-        <div class="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mb-4">
-          <div class="w-8 h-8 flex items-center justify-center text-primary">
-            <i class="ri-cpu-line ri-lg"></i>
-          </div>
-        </div>
-        <h3 class="text-xl font-semibold mb-3 dark:text-white">Anakart ve Güç Kaynağı Onarımı</h3>
-        <p class="text-gray-600 dark:text-gray-300">TV'niz açılmıyor mu? Anakart ve güç kaynağı sorunlarını komponent seviyesinde tamir ediyoruz.</p>
-      </div>
-      <!-- Service 3 -->
-      <div class="bg-white dark:bg-dark-700 p-6 rounded shadow-md hover:shadow-lg transition-shadow border border-gray-100 dark:border-gray-700" data-aos="fade-up" data-aos-delay="300">
-        <div class="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mb-4">
-          <div class="w-8 h-8 flex items-center justify-center text-primary">
-            <i class="ri-tv-line ri-lg"></i>
-          </div>
-        </div>
-        <h3 class="text-xl font-semibold mb-3 dark:text-white">LCD/LED Panel Değişimi</h3>
-        <p class="text-gray-600 dark:text-gray-300">Kırık veya hasarlı ekranınızı orijinal veya uyumlu panellerle değiştiriyoruz. Tüm marka ve modellere uygun çözümler.</p>
-      </div>
-      <!-- Service 4 -->
-      <div class="bg-white dark:bg-dark-700 p-6 rounded shadow-md hover:shadow-lg transition-shadow border border-gray-100 dark:border-gray-700" data-aos="fade-up" data-aos-delay="100">
-        <div class="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mb-4">
-          <div class="w-8 h-8 flex items-center justify-center text-primary">
-            <i class="ri-sd-card-line ri-lg"></i>
-          </div>
-        </div>
-        <h3 class="text-xl font-semibold mb-3 dark:text-white">MMC Bellek Tamir ve Yükseltme</h3>
-        <p class="text-gray-600 dark:text-gray-300">TV'nizin yazılım sorunları mı var? MMC bellek onarımı ve yazılım güncellemeleri ile TV'nizi yeniden çalışır hale getiriyoruz.</p>
-      </div>
-      <!-- Service 5 -->
-      <div class="bg-white dark:bg-dark-700 p-6 rounded shadow-md hover:shadow-lg transition-shadow border border-gray-100 dark:border-gray-700" data-aos="fade-up" data-aos-delay="200">
-        <div class="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mb-4">
-          <div class="w-8 h-8 flex items-center justify-center text-primary">
-            <i class="ri-wifi-line ri-lg"></i>
-          </div>
-        </div>
-        <h3 class="text-xl font-semibold mb-3 dark:text-white">Smart TV Yazılım Sorunları</h3>
-        <p class="text-gray-600 dark:text-gray-300">Akıllı TV'nizin uygulamaları çalışmıyor mu? Yazılım güncellemeleri ve sistem optimizasyonu ile sorunları çözüyoruz.</p>
-      </div>
-      <!-- Service 6 -->
-      <div class="bg-white dark:bg-dark-700 p-6 rounded shadow-md hover:shadow-lg transition-shadow border border-gray-100 dark:border-gray-700" data-aos="fade-up" data-aos-delay="300">
-        <div class="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mb-4">
-          <div class="w-8 h-8 flex items-center justify-center text-primary">
-            <i class="ri-volume-up-line ri-lg"></i>
-          </div>
-        </div>
-        <h3 class="text-xl font-semibold mb-3 dark:text-white">Görüntü ve Ses Problemleri</h3>
-        <p class="text-gray-600 dark:text-gray-300">Görüntü bozuklukları, ses sorunları ve diğer performans problemlerinizi hızlı ve ekonomik şekilde çözüyoruz.</p>
-      </div>
-    </div>
-  </div>
+<section id="services" class="py-16 bg-white">
+<div class="container mx-auto px-4">
+<div class="text-center mb-12">
+<h2 class="text-3xl font-bold text-gray-900 mb-4">Hizmetlerimiz</h2>
+<p class="text-gray-600 max-w-2xl mx-auto">Tüm marka ve model televizyonlar için kapsamlı tamir ve bakım hizmetleri sunuyoruz.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+<div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
+<div class="w-16 h-16 flex items-center justify-center bg-blue-50 rounded-full mb-4 text-primary">
+<i class="ri-tv-line ri-2x"></i>
+</div>
+<h3 class="text-xl font-semibold mb-3">TV Tamiri</h3>
+<p class="text-gray-600">Tüm marka ve model televizyonların arıza tespiti ve tamiri için profesyonel çözümler.</p>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
+<div class="w-16 h-16 flex items-center justify-center bg-blue-50 rounded-full mb-4 text-primary">
+<i class="ri-computer-line ri-2x"></i>
+</div>
+<h3 class="text-xl font-semibold mb-3">Panel Değişimi</h3>
+<p class="text-gray-600">Kırık, çatlak veya hasarlı TV panellerinin orijinal parçalarla değişimi.</p>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
+<div class="w-16 h-16 flex items-center justify-center bg-blue-50 rounded-full mb-4 text-primary">
+<i class="ri-code-s-slash-line ri-2x"></i>
+</div>
+<h3 class="text-xl font-semibold mb-3">Yazılım Güncelleme</h3>
+<p class="text-gray-600">Smart TV'lerin yazılım güncellemeleri, kanal ayarları ve sistem optimizasyonu.</p>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
+<div class="w-16 h-16 flex items-center justify-center bg-blue-50 rounded-full mb-4 text-primary">
+<i class="ri-home-gear-line ri-2x"></i>
+</div>
+<h3 class="text-xl font-semibold mb-3">Yerinde Servis</h3>
+<p class="text-gray-600">Büyük ekran TV'ler için ev veya iş yerinizde yerinde tamir ve bakım hizmeti.</p>
+</div>
+</div>
+<!-- Service Areas Section -->
+<div class="mt-20">
+<div class="text-center mb-12">
+<h2 class="text-3xl font-bold text-gray-900 mb-4">Hizmet Verdiğimiz Bölgeler</h2>
+<p class="text-gray-600 max-w-2xl mx-auto">Sinop ve Samsun ilçelerinde yerinde servis hizmeti sunuyoruz.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<div class="bg-white p-6 rounded-lg shadow-md">
+<h3 class="text-xl font-semibold mb-4 text-primary">Sinop</h3>
+<ul class="space-y-2">
+<li class="flex items-center text-gray-600">
+<i class="ri-checkbox-circle-line text-primary mr-2"></i>
+<span>Merkez</span>
+</li>
+<li class="flex items-center text-gray-600">
+<i class="ri-checkbox-circle-line text-primary mr-2"></i>
+<span>Ayancık</span>
+</li>
+<li class="flex items-center text-gray-600">
+<i class="ri-checkbox-circle-line text-primary mr-2"></i>
+<span>Boyabat</span>
+</li>
+<li class="flex items-center text-gray-600">
+<i class="ri-checkbox-circle-line text-primary mr-2"></i>
+<span>Durağan</span>
+</li>
+<li class="flex items-center text-gray-600">
+<i class="ri-checkbox-circle-line text-primary mr-2"></i>
+<span>Erfelek</span>
+</li>
+</ul>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-md">
+<h3 class="text-xl font-semibold mb-4 text-primary">Sinop (Devam)</h3>
+<ul class="space-y-2">
+<li class="flex items-center text-gray-600">
+<i class="ri-checkbox-circle-line text-primary mr-2"></i>
+<span>Gerze</span>
+</li>
+<li class="flex items-center text-gray-600">
+<i class="ri-checkbox-circle-line text-primary mr-2"></i>
+<span>Saraydüzü</span>
+</li>
+<li class="flex items-center text-gray-600">
+<i class="ri-checkbox-circle-line text-primary mr-2"></i>
+<span>Türkeli</span>
+</li>
+<li class="flex items-center text-gray-600">
+<i class="ri-checkbox-circle-line text-primary mr-2"></i>
+<span>Ulus</span>
+</li>
+<li class="flex items-center text-gray-600">
+<i class="ri-checkbox-circle-line text-primary mr-2"></i>
+<span>İncebuğday</span>
+</li>
+</ul>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-md">
+<h3 class="text-xl font-semibold mb-4 text-primary">Samsun</h3>
+<p class="text-gray-600 mb-4">Samsun'un tüm merkez ilçelerinde hizmet vermekteyiz.</p>
+<button id="pickupRequestBtn" class="w-full bg-primary text-white py-3 !rounded-button font-medium hover:bg-primary/90 transition-colors whitespace-nowrap flex items-center justify-center">
+<i class="ri-truck-line mr-2"></i>
+Televizyonunuzu Alalım
+</button>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+<div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
+<div class="w-16 h-16 flex items-center justify-center bg-blue-50 rounded-full mb-4 text-primary">
+<i class="ri-tv-line ri-2x"></i>
+</div>
+<h3 class="text-xl font-semibold mb-3">TV Tamiri</h3>
+<p class="text-gray-600">Tüm marka ve model televizyonların arıza tespiti ve tamiri için profesyonel çözümler.</p>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
+<div class="w-16 h-16 flex items-center justify-center bg-blue-50 rounded-full mb-4 text-primary">
+<i class="ri-computer-line ri-2x"></i>
+</div>
+<h3 class="text-xl font-semibold mb-3">Panel Değişimi</h3>
+<p class="text-gray-600">Kırık, çatlak veya hasarlı TV panellerinin orijinal parçalarla değişimi.</p>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
+<div class="w-16 h-16 flex items-center justify-center bg-blue-50 rounded-full mb-4 text-primary">
+<i class="ri-code-s-slash-line ri-2x"></i>
+</div>
+<h3 class="text-xl font-semibold mb-3">Yazılım Güncelleme</h3>
+<p class="text-gray-600">Smart TV'lerin yazılım güncellemeleri, kanal ayarları ve sistem optimizasyonu.</p>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
+<div class="w-16 h-16 flex items-center justify-center bg-blue-50 rounded-full mb-4 text-primary">
+<i class="ri-home-gear-line ri-2x"></i>
+</div>
+<h3 class="text-xl font-semibold mb-3">Yerinde Servis</h3>
+<p class="text-gray-600">Büyük ekran TV'ler için ev veya iş yerinizde yerinde tamir ve bakım hizmeti.</p>
+</div>
+</div>
+</div>
 </section>
-<!-- Process Section -->
-<section class="py-16 bg-gray-50 dark:bg-dark">
-  <div class="container mx-auto px-4">
-    <div class="text-center mb-12" data-aos="fade-up">
-      <h2 class="text-3xl font-bold text-gray-800 dark:text-white mb-3">Tamir Sürecimiz</h2>
-      <p class="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">TV'nizin tamir sürecinin nasıl işlediğini keşfedin</p>
-    </div>
-    <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-      <!-- Step 1 -->
-      <div class="process-step text-center" data-aos="fade-up" data-aos-delay="100">
-        <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-          <div class="w-8 h-8 flex items-center justify-center text-primary">
-            <i class="ri-phone-fill ri-xl"></i>
-          </div>
-        </div>
-        <h3 class="text-xl font-semibold mb-2 dark:text-white">1. Randevu Alın</h3>
-        <p class="text-gray-600 dark:text-gray-300">Online veya telefonla randevu oluşturun.</p>
-      </div>
-      <!-- Step 2 -->
-      <div class="process-step text-center" data-aos="fade-up" data-aos-delay="200">
-        <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-          <div class="w-8 h-8 flex items-center justify-center text-primary">
-            <i class="ri-tools-fill ri-xl"></i>
-          </div>
-        </div>
-        <h3 class="text-xl font-semibold mb-2 dark:text-white">2. Ücretsiz Keşif</h3>
-        <p class="text-gray-600 dark:text-gray-300">Uzmanımız arızayı teşhis eder ve fiyat belirler.</p>
-      </div>
-      <!-- Step 3 -->
-      <div class="process-step text-center" data-aos="fade-up" data-aos-delay="300">
-        <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-          <div class="w-8 h-8 flex items-center justify-center text-primary">
-            <i class="ri-settings-3-fill ri-xl"></i>
-          </div>
-        </div>
-        <h3 class="text-xl font-semibold mb-2 dark:text-white">3. Profesyonel Tamir</h3>
-        <p class="text-gray-600 dark:text-gray-300">Orijinal parçalarla arıza giderilir.</p>
-      </div>
-      <!-- Step 4 -->
-      <div class="process-step text-center" data-aos="fade-up" data-aos-delay="400">
-        <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-          <div class="w-8 h-8 flex items-center justify-center text-primary">
-            <i class="ri-checkbox-circle-fill ri-xl"></i>
-          </div>
-        </div>
-        <h3 class="text-xl font-semibold mb-2 dark:text-white">4. Teslimat ve Garanti</h3>
-        <p class="text-gray-600 dark:text-gray-300">TV'niz teslim edilir ve garanti belgesi verilir.</p>
-      </div>
-    </div>
-  </div>
+<!-- Appointment and Tracking Section -->
+<section id="appointment" class="py-16 bg-gray-50">
+<div class="container mx-auto px-4">
+<div class="flex flex-col lg:flex-row gap-10">
+<!-- Appointment Form -->
+<div class="lg:w-1/2 bg-white rounded-lg shadow-md p-8">
+<h2 class="text-2xl font-bold text-gray-900 mb-6">Online Randevu</h2>
+<form>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+<div>
+<label class="block text-gray-700 text-sm font-medium mb-2" for="name">Ad Soyad</label>
+<input type="text" id="name" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary/20" placeholder="Adınız Soyadınız">
+</div>
+<div>
+<label class="block text-gray-700 text-sm font-medium mb-2" for="phone">Telefon</label>
+<input type="tel" id="phone" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary/20" placeholder="+90 5XX XXX XX XX">
+</div>
+</div>
+<div class="mb-6">
+<label class="block text-gray-700 text-sm font-medium mb-2" for="email">E-posta</label>
+<input type="email" id="email" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary/20" placeholder="ornek@email.com">
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+<div>
+<label class="block text-gray-700 text-sm font-medium mb-2" for="brand">TV Markası</label>
+<div class="relative">
+<select id="brand" class="w-full px-4 py-2 border border-gray-300 rounded-md appearance-none pr-8 focus:ring-2 focus:ring-primary/20">
+<option value="" disabled selected>Marka Seçiniz</option>
+<option value="samsung">Samsung</option>
+<option value="lg">LG</option>
+<option value="sony">Sony</option>
+<option value="philips">Philips</option>
+<option value="vestel">Vestel</option>
+<option value="arcelik">Arçelik</option>
+<option value="beko">Beko</option>
+<option value="other">Diğer</option>
+</select>
+<div class="absolute right-3 top-1/2 transform -translate-y-1/2 pointer-events-none">
+<i class="ri-arrow-down-s-line"></i>
+</div>
+</div>
+</div>
+<div>
+<label class="block text-gray-700 text-sm font-medium mb-2" for="model">Model</label>
+<input type="text" id="model" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary/20" placeholder="TV Model Numarası">
+</div>
+</div>
+<div class="mb-6">
+<label class="block text-gray-700 text-sm font-medium mb-2" for="issue">Arıza Detayı</label>
+<textarea id="issue" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary/20" placeholder="Yaşadığınız sorunu detaylı olarak açıklayınız..."></textarea>
+</div>
+<div class="mb-6">
+<label class="block text-gray-700 text-sm font-medium mb-2">Tercih Ettiğiniz Tarih</label>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+<div>
+<input type="date" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary/20">
+</div>
+<div>
+<div class="relative">
+<select class="w-full px-4 py-2 border border-gray-300 rounded-md appearance-none pr-8 focus:ring-2 focus:ring-primary/20">
+<option value="" disabled selected>Saat Seçiniz</option>
+<option>09:00</option>
+<option>10:00</option>
+<option>11:00</option>
+<option>12:00</option>
+<option>14:00</option>
+<option>15:00</option>
+<option>16:00</option>
+<option>17:00</option>
+<option>18:00</option>
+</select>
+<div class="absolute right-3 top-1/2 transform -translate-y-1/2 pointer-events-none">
+<i class="ri-arrow-down-s-line"></i>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="mb-6">
+<label class="custom-checkbox">
+<input type="checkbox">
+<span class="checkmark"></span>
+<span class="text-sm text-gray-700">Kişisel verilerimin işlenmesine ilişkin <a href="#" class="text-primary">aydınlatma metnini</a> okudum ve onaylıyorum.</span>
+</label>
+</div>
+<button type="submit" class="w-full bg-primary text-white py-3 !rounded-button font-medium hover:bg-primary/90 transition-colors whitespace-nowrap">Randevu Oluştur</button>
+</form>
+</div>
+<!-- Tracking System -->
+<div id="tracking" class="lg:w-1/2">
+<div class="bg-white rounded-lg shadow-md p-8 mb-8">
+<h2 class="text-2xl font-bold text-gray-900 mb-6">Tamir Takibi</h2>
+<form class="mb-6">
+<div class="flex">
+<input type="text" class="flex-1 px-4 py-3 border border-gray-300 rounded-l-md focus:ring-2 focus:ring-primary/20 border-r-0" placeholder="Takip Numaranızı Giriniz">
+<button type="submit" class="bg-primary text-white px-6 py-3 !rounded-r-button font-medium hover:bg-primary/90 transition-colors whitespace-nowrap">Sorgula</button>
+</div>
+</form>
+<div class="bg-gray-50 p-6 rounded-lg">
+<div class="flex items-center justify-between mb-4">
+<div>
+<span class="text-sm text-gray-500">Takip No</span>
+<h3 class="font-semibold">TES2505-4872</h3>
+</div>
+<span class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm font-medium">Tamir Edildi</span>
+</div>
+<div class="space-y-4">
+<div class="flex">
+<div class="w-1/3 text-sm text-gray-500">Müşteri</div>
+<div class="w-2/3 font-medium">Ahmet Yılmaz</div>
+</div>
+<div class="flex">
+<div class="w-1/3 text-sm text-gray-500">TV Bilgisi</div>
+<div class="w-2/3 font-medium">Samsung UE55TU8000 Smart TV</div>
+</div>
+<div class="flex">
+<div class="w-1/3 text-sm text-gray-500">Arıza</div>
+<div class="w-2/3 font-medium">Ekranda görüntü yok, ses var</div>
+</div>
+<div class="flex">
+<div class="w-1/3 text-sm text-gray-500">Teknisyen</div>
+<div class="w-2/3 font-medium">Mehmet Demir</div>
+</div>
+</div>
+<div class="mt-6 border-t border-gray-200 pt-4">
+<h4 class="font-medium mb-3">Tamir Durumu</h4>
+<div class="space-y-3">
+<div class="flex items-start">
+<div class="w-8 h-8 flex items-center justify-center bg-green-100 rounded-full text-green-600 mt-1">
+<i class="ri-check-line"></i>
+</div>
+<div class="ml-3">
+<div class="flex items-center">
+<h5 class="font-medium">Teslim Alındı</h5>
+<span class="text-xs text-gray-500 ml-2">27.05.2025 - 10:15</span>
+</div>
+<p class="text-sm text-gray-600">Cihazınız servisimize teslim alındı.</p>
+</div>
+</div>
+<div class="flex items-start">
+<div class="w-8 h-8 flex items-center justify-center bg-green-100 rounded-full text-green-600 mt-1">
+<i class="ri-check-line"></i>
+</div>
+<div class="ml-3">
+<div class="flex items-center">
+<h5 class="font-medium">Arıza Tespiti Yapıldı</h5>
+<span class="text-xs text-gray-500 ml-2">27.05.2025 - 11:30</span>
+</div>
+<p class="text-sm text-gray-600">LED sürücü kartı arızası tespit edildi.</p>
+</div>
+</div>
+<div class="flex items-start">
+<div class="w-8 h-8 flex items-center justify-center bg-green-100 rounded-full text-green-600 mt-1">
+<i class="ri-check-line"></i>
+</div>
+<div class="ml-3">
+<div class="flex items-center">
+<h5 class="font-medium">Tamir Edildi</h5>
+<span class="text-xs text-gray-500 ml-2">27.05.2025 - 15:45</span>
+</div>
+<p class="text-sm text-gray-600">LED sürücü kartı değiştirildi ve test edildi.</p>
+</div>
+</div>
+<div class="flex items-start">
+<div class="w-8 h-8 flex items-center justify-center bg-blue-100 rounded-full text-blue-600 mt-1">
+<i class="ri-time-line"></i>
+</div>
+<div class="ml-3">
+<div class="flex items-center">
+<h5 class="font-medium">Teslime Hazır</h5>
+<span class="text-xs text-gray-500 ml-2">27.05.2025 - 16:30</span>
+</div>
+<p class="text-sm text-gray-600">Cihazınız teslime hazır. Ödeme bilgisi SMS ile gönderildi.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-white rounded-lg shadow-md p-8">
+<h2 class="text-2xl font-bold text-gray-900 mb-6">Bildirim Ayarları</h2>
+<div class="space-y-4">
+<div class="flex items-center justify-between">
+<div>
+<h3 class="font-medium">SMS Bildirimleri</h3>
+<p class="text-sm text-gray-600">Tamir durumu güncellemelerini SMS ile alın</p>
+</div>
+<label class="switch">
+<input type="checkbox" checked>
+<span class="slider"></span>
+</label>
+</div>
+<div class="flex items-center justify-between">
+<div>
+<h3 class="font-medium">E-posta Bildirimleri</h3>
+<p class="text-sm text-gray-600">Tamir durumu güncellemelerini e-posta ile alın</p>
+</div>
+<label class="switch">
+<input type="checkbox">
+<span class="slider"></span>
+</label>
+</div>
+<div class="flex items-center justify-between">
+<div>
+<h3 class="font-medium">Fiyat Teklifi Bildirimleri</h3>
+<p class="text-sm text-gray-600">Tamir öncesi fiyat tekliflerini alın</p>
+</div>
+<label class="switch">
+<input type="checkbox" checked>
+<span class="slider"></span>
+</label>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
 </section>
-<!-- Why Choose Us Section -->
-<section id="why-us" class="py-16 bg-white dark:bg-dark-800">
-  <div class="container mx-auto px-4">
-    <div class="text-center mb-12" data-aos="fade-up">
-      <h2 class="text-3xl font-bold text-gray-800 dark:text-white mb-3">Neden Bizi Seçmelisiniz?</h2>
-      <p class="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">15 yıllık deneyimimizle müşteri memnuniyetini en üst seviyede tutuyoruz. İşte bizi farklı kılan özelliklerimiz:</p>
-    </div>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-      <!-- Feature 1 -->
-      <div class="bg-white dark:bg-dark-700 p-6 rounded shadow-sm hover:shadow transition-shadow text-center" data-aos="fade-up" data-aos-delay="100">
-        <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-          <div class="w-8 h-8 flex items-center justify-center text-primary">
-            <i class="ri-tools-fill ri-lg"></i>
-          </div>
-        </div>
-        <h3 class="text-xl font-semibold mb-2 dark:text-white">Orijinal Yedek Parça</h3>
-        <p class="text-gray-600 dark:text-gray-300">Tüm tamirlerde orijinal veya kaliteli muadil parçalar kullanıyoruz.</p>
-      </div>
-      <!-- Feature 2 -->
-      <div class="bg-white dark:bg-dark-700 p-6 rounded shadow-sm hover:shadow transition-shadow text-center" data-aos="fade-up" data-aos-delay="200">
-        <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-          <div class="w-8 h-8 flex items-center justify-center text-primary">
-            <i class="ri-time-fill ri-lg"></i>
-          </div>
-        </div>
-        <h3 class="text-xl font-semibold mb-2 dark:text-white">Aynı Gün Servis</h3>
-        <p class="text-gray-600 dark:text-gray-300">Çoğu arızayı aynı gün içinde tamir ederek TV'nizi hızlıca kullanıma sunuyoruz.</p>
-      </div>
-      <!-- Feature 3 -->
-      <div class="bg-white dark:bg-dark-700 p-6 rounded shadow-sm hover:shadow transition-shadow text-center" data-aos="fade-up" data-aos-delay="300">
-        <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-          <div class="w-8 h-8 flex items-center justify-center text-primary">
-            <i class="ri-money-dollar-circle-fill ri-lg"></i>
-          </div>
-        </div>
-        <h3 class="text-xl font-semibold mb-2 dark:text-white">Uygun Fiyat Garantisi</h3>
-        <p class="text-gray-600 dark:text-gray-300">Piyasadaki en ekonomik fiyatlarla kaliteli tamir hizmeti sunuyoruz.</p>
-      </div>
-      <!-- Feature 4 -->
-      <div class="bg-white dark:bg-dark-700 p-6 rounded shadow-sm hover:shadow transition-shadow text-center" data-aos="fade-up" data-aos-delay="400">
-        <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-          <div class="w-8 h-8 flex items-center justify-center text-primary">
-            <i class="ri-award-fill ri-lg"></i>
-          </div>
-        </div>
-        <h3 class="text-xl font-semibold mb-2 dark:text-white">2 Yıl Tamir Garantisi</h3>
-        <p class="text-gray-600 dark:text-gray-300">Yaptığımız tüm tamirlere 2 yıl garanti veriyoruz. Güvenle tercih edebilirsiniz.</p>
-      </div>
-    </div>
-  </div>
+<!-- Technicians Section -->
+<section class="py-16 bg-white">
+<div class="container mx-auto px-4">
+<div class="text-center mb-12">
+<h2 class="text-3xl font-bold text-gray-900 mb-4">Uzman Teknisyenlerimiz</h2>
+<p class="text-gray-600 max-w-2xl mx-auto">Deneyimli ve sertifikalı teknisyenlerimiz, en karmaşık TV sorunlarını bile çözebilir.</p>
+</div>
+<div class="flex overflow-x-auto pb-4 space-x-6">
+<div class="flex-shrink-0 w-64 bg-white rounded-lg shadow-md overflow-hidden">
+<img src="https://readdy.ai/api/search-image?query=professional%2520male%2520TV%2520technician%2520in%2520blue%2520uniform%252C%2520mid%252030s%252C%2520Turkish%2520appearance%252C%2520confident%2520pose%252C%2520holding%2520tools%252C%2520clean%2520background%252C%2520professional%2520lighting%252C%2520high%2520quality%2520portrait%2520photo&width=300&height=300&seq=2&orientation=squarish" alt="Teknisyen" class="w-full h-48 object-cover object-top">
+<div class="p-4">
+<h3 class="font-semibold text-lg">Mehmet Demir</h3>
+<p class="text-gray-600 text-sm mb-2">Kıdemli TV Teknisyeni</p>
+<p class="text-gray-700 text-sm">15+ yıl deneyim, Samsung ve LG sertifikalı uzman.</p>
+</div>
+</div>
+<div class="flex-shrink-0 w-64 bg-white rounded-lg shadow-md overflow-hidden">
+<img src="https://readdy.ai/api/search-image?query=professional%2520female%2520TV%2520technician%2520in%2520blue%2520uniform%252C%2520late%252020s%252C%2520Turkish%2520appearance%252C%2520confident%2520pose%252C%2520working%2520with%2520electronic%2520equipment%252C%2520clean%2520background%252C%2520professional%2520lighting%252C%2520high%2520quality%2520portrait%2520photo&width=300&height=300&seq=3&orientation=squarish" alt="Teknisyen" class="w-full h-48 object-cover object-top">
+<div class="p-4">
+<h3 class="font-semibold text-lg">Ayşe Yıldız</h3>
+<p class="text-gray-600 text-sm mb-2">Elektronik Mühendisi</p>
+<p class="text-gray-700 text-sm">8 yıl deneyim, Smart TV ve yazılım uzmanı.</p>
+</div>
+</div>
+<div class="flex-shrink-0 w-64 bg-white rounded-lg shadow-md overflow-hidden">
+<img src="https://readdy.ai/api/search-image?query=professional%2520male%2520TV%2520technician%2520in%2520blue%2520uniform%252C%2520early%252040s%252C%2520Turkish%2520appearance%252C%2520confident%2520pose%252C%2520repairing%2520TV%2520circuit%2520board%252C%2520clean%2520background%252C%2520professional%2520lighting%252C%2520high%2520quality%2520portrait%2520photo&width=300&height=300&seq=4&orientation=squarish" alt="Teknisyen" class="w-full h-48 object-cover object-top">
+<div class="p-4">
+<h3 class="font-semibold text-lg">Ali Kaya</h3>
+<p class="text-gray-600 text-sm mb-2">Panel Uzmanı</p>
+<p class="text-gray-700 text-sm">12 yıl deneyim, LCD/LED panel değişim uzmanı.</p>
+</div>
+</div>
+<div class="flex-shrink-0 w-64 bg-white rounded-lg shadow-md overflow-hidden">
+<img src="https://readdy.ai/api/search-image?query=professional%2520male%2520TV%2520technician%2520in%2520blue%2520uniform%252C%2520mid%252030s%252C%2520Turkish%2520appearance%252C%2520confident%2520pose%252C%2520diagnosing%2520TV%2520with%2520electronic%2520tools%252C%2520clean%2520background%252C%2520professional%2520lighting%252C%2520high%2520quality%2520portrait%2520photo&width=300&height=300&seq=5&orientation=squarish" alt="Teknisyen" class="w-full h-48 object-cover object-top">
+<div class="p-4">
+<h3 class="font-semibold text-lg">Mustafa Özkan</h3>
+<p class="text-gray-600 text-sm mb-2">Arıza Tespit Uzmanı</p>
+<p class="text-gray-700 text-sm">10 yıl deneyim, elektronik kart tamiri uzmanı.</p>
+</div>
+</div>
+</div>
+</div>
 </section>
-<!-- Customer Reviews Section -->
-<section class="py-16 bg-gray-50 dark:bg-dark">
-  <div class="container mx-auto px-4">
-    <div class="text-center mb-12" data-aos="fade-up">
-      <h2 class="text-3xl font-bold text-gray-800 dark:text-white mb-3">Müşterilerimiz Ne Diyor?</h2>
-      <p class="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">15 yıldır binlerce müşterimize hizmet verdik. İşte bazı geri bildirimler:</p>
-    </div>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-      <!-- Review 1 -->
-      <div class="bg-white dark:bg-dark-700 p-6 rounded shadow-md border border-gray-100 dark:border-gray-700" data-aos="fade-up" data-aos-delay="100">
-        <div class="flex items-center mb-4">
-          <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary mr-4">
-            <i class="ri-user-fill ri-lg"></i>
-          </div>
-          <div>
-            <h4 class="font-semibold dark:text-white">Ahmet Y.</h4>
-            <div class="flex text-yellow-400">
-              <i class="ri-star-fill"></i>
-              <i class="ri-star-fill"></i>
-              <i class="ri-star-fill"></i>
-              <i class="ri-star-fill"></i>
-              <i class="ri-star-fill"></i>
-            </div>
-          </div>
-        </div>
-        <p class="text-gray-600 dark:text-gray-300">"Samsung televizyonumun paneli kırılmıştı. Çok uygun fiyata ve hızlı şekilde değişim yaptılar. Kesinlikle tavsiye ederim."</p>
-      </div>
-      <!-- Review 2 -->
-      <div class="bg-white dark:bg-dark-700 p-6 rounded shadow-md border border-gray-100 dark:border-gray-700" data-aos="fade-up" data-aos-delay="200">
-        <div class="flex items-center mb-4">
-          <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary mr-4">
-            <i class="ri-user-fill ri-lg"></i>
-          </div>
-          <div>
-            <h4 class="font-semibold dark:text-white">Ayşe K.</h4>
-            <div class="flex text-yellow-400">
-              <i class="ri-star-fill"></i>
-              <i class="ri-star-fill"></i>
-              <i class="ri-star-fill"></i>
-              <i class="ri-star-fill"></i>
-              <i class="ri-star-fill"></i>
-            </div>
-          </div>
-        </div>
-        <p class="text-gray-600 dark:text-gray-300">"LG TV'mde görüntü sorunu vardı. Aynı gün içinde tamir ettiler ve 2 yıl garanti verdiler. Çok memnun kaldım."</p>
-      </div>
-      <!-- Review 3 -->
-      <div class="bg-white dark:bg-dark-700 p-6 rounded shadow-md border border-gray-100 dark:border-gray-700" data-aos="fade-up" data-aos-delay="300">
-        <div class="flex items-center mb-4">
-          <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary mr-4">
-            <i class="ri-user-fill ri-lg"></i>
-          </div>
-          <div>
-            <h4 class="font-semibold dark:text-white">Mehmet T.</h4>
-            <div class="flex text-yellow-400">
-              <i class="ri-star-fill"></i>
-              <i class="ri-star-fill"></i>
-              <i class="ri-star-fill"></i>
-              <i class="ri-star-fill"></i>
-              <i class="ri-star-half-fill"></i>
-            </div>
-          </div>
-        </div>
-        <p class="text-gray-600 dark:text-gray-300">"Vestel TV'mde anakart arızası vardı. Diğer servisler çok pahalı fiyat verdi ama burada çok uygun fiyata tamir oldu. Teşekkürler."</p>
-      </div>
-    </div>
-    <!-- Google Reviews Embed -->
-    <div class="mt-12 max-w-4xl mx-auto" data-aos="fade-up">
-      <div class="embedsocial-reviews" data-ref="YOUR_EMBED_TOKEN"></div>
-    </div>
-  </div>
-</section>
-<!-- Online Randevu Section -->
-<section id="appointment" class="py-16 bg-white dark:bg-dark-800">
-  <div class="container mx-auto px-4">
-    <div class="text-center mb-12" data-aos="fade-up">
-      <h2 class="text-3xl font-bold text-gray-800 dark:text-white mb-3">Online Randevu</h2>
-      <p class="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">Uygun zamanınızı seçin, uzman ekibimiz sizi arayıp onaylayacaktır.</p>
-    </div>
-    <div class="max-w-3xl mx-auto bg-white dark:bg-dark-700 p-6 rounded shadow-md" data-aos="fade-up" data-aos-delay="100">
-      <form id="appointmentForm">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div class="mb-4">
-            <label for="appointment-name" class="block text-gray-700 dark:text-gray-300 mb-2">Adınız Soyadınız*</label>
-            <input type="text" id="appointment-name" class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 dark:bg-dark-800 rounded focus:border-primary transition-colors" required>
-          </div>
-          <div class="mb-4">
-            <label for="appointment-phone" class="block text-gray-700 dark:text-gray-300 mb-2">Telefon Numaranız*</label>
-            <input type="tel" id="appointment-phone" class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 dark:bg-dark-800 rounded focus:border-primary transition-colors" required>
-          </div>
-          <div class="mb-4">
-            <label for="appointment-date" class="block text-gray-700 dark:text-gray-300 mb-2">Tercih Ettiğiniz Tarih*</label>
-            <input type="date" id="appointment-date" class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 dark:bg-dark-800 rounded focus:border-primary transition-colors" required>
-          </div>
-          <div class="mb-4">
-            <label for="appointment-time" class="block text-gray-700 dark:text-gray-300 mb-2">Tercih Ettiğiniz Saat*</label>
-            <select id="appointment-time" class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 dark:bg-dark-800 rounded focus:border-primary transition-colors" required>
-              <option value="">Saat Seçiniz</option>
-              <option value="09:00-11:00">09:00 - 11:00</option>
-              <option value="11:00-13:00">11:00 - 13:00</option>
-              <option value="13:00-15:00">13:00 - 15:00</option>
-              <option value="15:00-17:00">15:00 - 17:00</option>
-              <option value="17:00-19:00">17:00 - 19:00</option>
-            </select>
-          </div>
-          <div class="mb-4 md:col-span-2">
-            <label for="appointment-address" class="block text-gray-700 dark:text-gray-300 mb-2">Adres (Servis için)*</label>
-            <input type="text" id="appointment-address" class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 dark:bg-dark-800 rounded focus:border-primary transition-colors" required>
-          </div>
-          <div class="mb-4 md:col-span-2">
-            <label for="appointment-model" class="block text-gray-700 dark:text-gray-300 mb-2">TV Marka/Model*</label>
-            <input type="text" id="appointment-model" class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 dark:bg-dark-800 rounded focus:border-primary transition-colors" required>
-          </div>
-          <div class="mb-4 md:col-span-2">
-            <label for="appointment-issue" class="block text-gray-700 dark:text-gray-300 mb-2">Arıza Açıklaması*</label>
-            <textarea id="appointment-issue" rows="3" class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 dark:bg-dark-800 rounded focus:border-primary transition-colors" required></textarea>
-          </div>
-        </div>
-        <button type="submit" class="w-full bg-primary hover:bg-primary/90 text-white font-medium py-3 px-4 rounded-button whitespace-nowrap transition-colors mt-4">Randevu Oluştur</button>
-      </form>
-    </div>
-  </div>
+<!-- Contact Section -->
+<section id="contact" class="py-16 bg-gray-50">
+<div class="container mx-auto px-4">
+<div class="text-center mb-12">
+<h2 class="text-3xl font-bold text-gray-900 mb-4">İletişim</h2>
+<p class="text-gray-600 max-w-2xl mx-auto">Sorularınız için bize ulaşabilir veya servisimizi ziyaret edebilirsiniz.</p>
+</div>
+<div class="flex flex-col lg:flex-row gap-10">
+<div class="lg:w-1/2">
+<div class="bg-white rounded-lg shadow-md overflow-hidden">
+<div class="h-64 bg-gray-200">
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2968.2896536435163!2d35.15382937678287!3d41.99141335921046!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x409b73fe1fea6fb3%3A0x7a7f8d1b79bab2ee!2sCamikebir%2C%20Alaaddin%20Keykubat%20Cd.%20No%3A15%2C%2057000%20Sinop%20Merkez%2FSinop!5e0!3m2!1str!2str!4v1716822266121!5m2!1str!2str" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+</div>
+<div class="p-6">
+<h3 class="text-xl font-semibold mb-4">İletişim Bilgileri</h3>
+<div class="space-y-4">
+<div class="flex items-start">
+<div class="w-10 h-10 flex items-center justify-center bg-blue-50 rounded-full text-primary mt-1">
+<i class="ri-map-pin-line ri-lg"></i>
+</div>
+<div class="ml-4">
+<h4 class="font-medium">Adres</h4>
+<p class="text-gray-600">Camikebir, Alaaddin Keykubat Cd. No:15, 57000 Sinop Merkez/Sinop, Türkiye</p>
+</div>
+</div>
+<div class="flex items-start">
+<div class="w-10 h-10 flex items-center justify-center bg-blue-50 rounded-full text-primary mt-1">
+<i class="ri-phone-line ri-lg"></i>
+</div>
+<div class="ml-4">
+<h4 class="font-medium">Telefon</h4>
+<p class="text-gray-600">+90 544 260 57 57</p>
+</div>
+</div>
+<div class="flex items-start">
+<div class="w-10 h-10 flex items-center justify-center bg-blue-50 rounded-full text-primary mt-1">
+<i class="ri-mail-line ri-lg"></i>
+</div>
+<div class="ml-4">
+<h4 class="font-medium">E-posta</h4>
+<p class="text-gray-600">info@tesatv.com</p>
+</div>
+</div>
+<div class="flex items-start">
+<div class="w-10 h-10 flex items-center justify-center bg-blue-50 rounded-full text-primary mt-1">
+<i class="ri-time-line ri-lg"></i>
+</div>
+<div class="ml-4">
+<h4 class="font-medium">Çalışma Saatleri</h4>
+<p class="text-gray-600">Pazartesi - Cumartesi: 08:30 - 19:30</p>
+<p class="text-gray-600">Pazar: Kapalı</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="lg:w-1/2">
+<div class="bg-white rounded-lg shadow-md p-8">
+<h3 class="text-xl font-semibold mb-6">Bize Ulaşın</h3>
+<form>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+<div>
+<label class="block text-gray-700 text-sm font-medium mb-2" for="contact-name">Ad Soyad</label>
+<input type="text" id="contact-name" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary/20" placeholder="Adınız Soyadınız">
+</div>
+<div>
+<label class="block text-gray-700 text-sm font-medium mb-2" for="contact-email">E-posta</label>
+<input type="email" id="contact-email" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary/20" placeholder="ornek@email.com">
+</div>
+</div>
+<div class="mb-6">
+<label class="block text-gray-700 text-sm font-medium mb-2" for="contact-subject">Konu</label>
+<input type="text" id="contact-subject" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary/20" placeholder="Mesajınızın konusu">
+</div>
+<div class="mb-6">
+<label class="block text-gray-700 text-sm font-medium mb-2" for="contact-message">Mesajınız</label>
+<textarea id="contact-message" rows="5" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary/20" placeholder="Mesajınızı buraya yazınız..."></textarea>
+</div>
+<button type="submit" class="w-full bg-primary text-white py-3 !rounded-button font-medium hover:bg-primary/90 transition-colors whitespace-nowrap">Mesaj Gönder</button>
+</form>
+</div>
+</div>
+</div>
+</div>
 </section>
 <!-- FAQ Section -->
-<section class="py-16 bg-gray-50 dark:bg-dark">
-  <div class="container mx-auto px-4">
-    <div class="text-center mb-12" data-aos="fade-up">
-      <h2 class="text-3xl font-bold text-gray-800 dark:text-white mb-3">Sıkça Sorulan Sorular</h2>
-      <p class="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">Müşterilerimizin en çok sorduğu sorular ve cevapları</p>
-    </div>
-    <div class="max-w-3xl mx-auto">
-      <div class="space-y-4">
-        <!-- Question 1 -->
-        <div class="border border-gray-200 dark:border-gray-700 rounded overflow-hidden" data-aos="fade-up" data-aos-delay="100">
-          <button class="w-full flex justify-between items-center p-4 text-left font-medium bg-gray-50 dark:bg-dark-700 hover:bg-gray-100 dark:hover:bg-dark-600 transition-colors">
-            <span class="dark:text-white">TV tamiri ne kadar sürer?</span>
-            <i class="ri-arrow-down-s-line transition-transform duration-200"></i>
-          </button>
-          <div class="p-4 text-gray-600 dark:text-gray-300 hidden">
-            Çoğu arıza aynı gün içinde tamamlanmaktadır. Panel değişimi gibi büyük işlemlerde 1-2 iş günü sürebilir.
-          </div>
-        </div>
-        <!-- Question 2 -->
-        <div class="border border-gray-200 dark:border-gray-700 rounded overflow-hidden" data-aos="fade-up" data-aos-delay="200">
-          <button class="w-full flex justify-between items-center p-4 text-left font-medium bg-gray-50 dark:bg-dark-700 hover:bg-gray-100 dark:hover:bg-dark-600 transition-colors">
-            <span class="dark:text-white">Garanti kapsamında neler var?</span>
-            <i class="ri-arrow-down-s-line transition-transform duration-200"></i>
-          </button>
-          <div class="p-4 text-gray-600 dark:text-gray-300 hidden">
-            Yaptığımız tüm tamir işlemlerine 2 yıl garanti veriyoruz. Garanti kapsamında aynı arızanın tekrarlanması durumunda ücretsiz tamir hizmeti sunuyoruz.
-          </div>
-        </div>
-        <!-- Question 3 -->
-        <div class="border border-gray-200 dark:border-gray-700 rounded overflow-hidden" data-aos="fade-up" data-aos-delay="300">
-          <button class="w-full flex justify-between items-center p-4 text-left font-medium bg-gray-50 dark:bg-dark-700 hover:bg-gray-100 dark:hover:bg-dark-600 transition-colors">
-            <span class="dark:text-white">Evde servis hizmetiniz var mı?</span>
-            <i class="ri-arrow-down-s-line transition-transform duration-200"></i>
-          </button>
-          <div class="p-4 text-gray-600 dark:text-gray-300 hidden">
-            Evet, İstanbul'un tüm ilçelerinde evde servis hizmeti sunuyoruz. Randevu alarak teknik ekibimizi adresinize yönlendirebiliriz.
-          </div>
-        </div>
-        <!-- Question 4 -->
-        <div class="border border-gray-200 dark:border-gray-700 rounded overflow-hidden" data-aos="fade-up" data-aos-delay="400">
-          <button class="w-full flex justify-between items-center p-4 text-left font-medium bg-gray-50 dark:bg-dark-700 hover:bg-gray-100 dark:hover:bg-dark-600 transition-colors">
-            <span class="dark:text-white">Fiyatlar nasıl belirleniyor?</span>
-            <i class="ri-arrow-down-s-line transition-transform duration-200"></i>
-          </button>
-          <div class="p-4 text-gray-600 dark:text-gray-300 hidden">
-            Fiyatlar arızanın türüne, kullanılacak yedek parçaya ve marka/model özelliklerine göre değişiklik gösterir. Ücretsiz keşif sonrası net fiyat bilgisi veriyoruz.
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- Brands We Service -->
-<section class="py-16 bg-white dark:bg-dark-800">
-  <div class="container mx-auto px-4">
-    <div class="text-center mb-12" data-aos="fade-up">
-      <h2 class="text-3xl font-bold text-gray-800 dark:text-white mb-3">Servis Verdiğimiz Markalar</h2>
-      <p class="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">Tüm popüler TV markalarında uzman tamir hizmeti sunuyoruz.</p>
-    </div>
-    <div class="flex flex-wrap justify-center items-center gap-8 md:gap-12">
-      <div class="text-center" data-aos="fade-up" data-aos-delay="100">
-        <img src="assets/logos/samsung.png" alt="Samsung" class="brand-logo mx-auto">
-        <p class="mt-2 font-medium dark:text-white">Samsung</p>
-      </div>
-      <div class="text-center" data-aos="fade-up" data-aos-delay="200">
-        <img src="assets/logos/lg.png" alt="LG" class="brand-logo mx-auto">
-        <p class="mt-2 font-medium dark:text-white">LG</p>
-      </div>
-      <div class="text-center" data-aos="fade-up" data-aos-delay="300">
-        <img src="assets/logos/sony.png" alt="Sony" class="brand-logo mx-auto">
-        <p class="mt-2 font-medium dark:text-white">Sony</p>
-      </div>
-      <div class="text-center" data-aos="fade-up" data-aos-delay="400">
-        <img src="assets/logos/philips.png" alt="Philips" class="brand-logo mx-auto">
-        <p class="mt-2 font-medium dark:text-white">Philips</p>
-      </div>
-      <div class="text-center" data-aos="fade-up" data-aos-delay="100">
-        <img src="assets/logos/vestel.png" alt="Vestel" class="brand-logo mx-auto">
-        <p class="mt-2 font-medium dark:text-white">Vestel</p>
-      </div>
-      <div class="text-center" data-aos="fade-up" data-aos-delay="200">
-        <img src="assets/logos/arcelik.png" alt="Arçelik" class="brand-logo mx-auto">
-        <p class="mt-2 font-medium dark:text-white">Arçelik</p>
-      </div>
-      <div class="text-center" data-aos="fade-up" data-aos-delay="300">
-        <img src="assets/logos/beko.png" alt="Beko" class="brand-logo mx-auto">
-        <p class="mt-2 font-medium dark:text-white">Beko</p>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- Service Areas -->
-<section class="py-12 bg-gray-50 dark:bg-dark">
-  <div class="container mx-auto px-4">
-    <div class="text-center mb-8" data-aos="fade-up">
-      <h2 class="text-2xl font-bold text-gray-800 dark:text-white mb-3">Hizmet Verdiğimiz Bölgeler</h2>
-      <p class="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">Sinop ve Samsun ilçelerinde yerinde servis hizmeti sunuyoruz.</p>
-    </div>
-    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 max-w-4xl mx-auto">
-      <div class="text-center p-2" data-aos="fade-up" data-aos-delay="100">
-        <p class="text-gray-700 dark:text-gray-300">Ayancık</p>
-      </div>
-      <div class="text-center p-2" data-aos="fade-up" data-aos-delay="150">
-        <p class="text-gray-700 dark:text-gray-300">Boyabat</p>
-      </div>
-      <div class="text-center p-2" data-aos="fade-up" data-aos-delay="200">
-        <p class="text-gray-700 dark:text-gray-300">Durağan</p>
-      </div>
-      <div class="text-center p-2" data-aos="fade-up" data-aos-delay="250">
-        <p class="text-gray-700 dark:text-gray-300">Erfelek</p>
-      </div>
-      <div class="text-center p-2" data-aos="fade-up" data-aos-delay="300">
-        <p class="text-gray-700 dark:text-gray-300">Gerze</p>
-      </div>
-      <div class="text-center p-2" data-aos="fade-up" data-aos-delay="350">
-        <p class="text-gray-700 dark:text-gray-300">Saraydüzü</p>
-      </div>
-      <div class="text-center p-2" data-aos="fade-up" data-aos-delay="400">
-        <p class="text-gray-700 dark:text-gray-300">Türkeli</p>
-      </div>
-      <div class="text-center p-2" data-aos="fade-up" data-aos-delay="450">
-        <p class="text-gray-700 dark:text-gray-300">Ulus</p>
-      </div>
-      <div class="text-center p-2" data-aos="fade-up" data-aos-delay="500">
-        <p class="text-gray-700 dark:text-gray-300">İncebuğday</p>
-      </div>
-      <div class="text-center p-2" data-aos="fade-up" data-aos-delay="550">
-        <p class="text-gray-700 dark:text-gray-300">Merkez (Sinop)</p>
-      </div>
-      <div class="text-center p-2" data-aos="fade-up" data-aos-delay="600">
-        <p class="text-gray-700 dark:text-gray-300">Samsun</p>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- Gerçek Zamanlı Tamir Takip -->
-<section id="repair-tracking" class="py-16 bg-white dark:bg-dark-800">
-  <div class="container mx-auto px-4">
-    <div class="text-center mb-12" data-aos="fade-up">
-      <h2 class="text-3xl font-bold text-gray-800 dark:text-white mb-3">Gerçek Zamanlı Tamir Takibi</h2>
-      <p class="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">Servis numaranızla tamir durumunuzu takip edin.</p>
-    </div>
-    <div class="max-w-md mx-auto bg-white dark:bg-dark-700 p-6 rounded shadow-md" data-aos="fade-up">
-      <form id="trackingForm">
-        <div class="mb-4">
-          <label for="repairId" class="block text-gray-700 dark:text-gray-300 mb-2">Servis Numarası veya Telefon Numarası</label>
-          <input type="text" id="repairId" class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 dark:bg-dark-800 rounded focus:border-primary transition-colors" required placeholder="Örnek: 123456 veya 5442605757">
-        </div>
-        <button type="submit" class="w-full bg-primary hover:bg-primary/90 text-white font-medium py-3 px-4 rounded-button whitespace-nowrap transition-colors">Durumu Kontrol Et</button>
-      </form>
-      <div id="trackingResult" class="mt-6 text-gray-700 dark:text-gray-300 hidden">
-        <h3 class="font-semibold mb-2">Tamir Durumu:</h3>
-        <p id="trackingStatus">Beklemede...</p>
-      </div>
-    </div>
-  </div>
+<section class="py-16 bg-white">
+<div class="container mx-auto px-4">
+<div class="text-center mb-12">
+<h2 class="text-3xl font-bold text-gray-900 mb-4">Sıkça Sorulan Sorular</h2>
+<p class="text-gray-600 max-w-2xl mx-auto">TV tamiri hakkında en çok sorulan soruların cevaplarını burada bulabilirsiniz.</p>
+</div>
+<div class="max-w-3xl mx-auto">
+<div class="space-y-4">
+<div class="border border-gray-200 rounded-lg">
+<button class="flex justify-between items-center w-full px-6 py-4 text-left font-medium text-gray-900 focus:outline-none">
+<span>TV tamiri ne kadar sürer?</span>
+<i class="ri-arrow-down-s-line ri-lg"></i>
+</button>
+<div class="px-6 pb-4">
+<p class="text-gray-600">Arıza türüne bağlı olarak değişmektedir. Basit yazılım sorunları aynı gün çözülebilirken, panel değişimi gibi büyük onarımlar 2-5 iş günü sürebilir. Arıza tespiti sonrası kesin süre bilgisi verilmektedir.</p>
+</div>
+</div>
+<div class="border border-gray-200 rounded-lg">
+<button class="flex justify-between items-center w-full px-6 py-4 text-left font-medium text-gray-900 focus:outline-none">
+<span>Tamir ücreti ne kadardır?</span>
+<i class="ri-arrow-down-s-line ri-lg"></i>
+</button>
+<div class="hidden px-6 pb-4">
+<p class="text-gray-600">Tamir ücretleri arıza türüne, TV modeline ve değişmesi gereken parçalara göre değişiklik gösterir. Arıza tespiti sonrası detaylı fiyat teklifi sunulmaktadır. Müşteri onayı olmadan herhangi bir işlem yapılmamaktadır.</p>
+</div>
+</div>
+<div class="border border-gray-200 rounded-lg">
+<button class="flex justify-between items-center w-full px-6 py-4 text-left font-medium text-gray-900 focus:outline-none">
+<span>Yerinde servis hizmeti veriyor musunuz?</span>
+<i class="ri-arrow-down-s-line ri-lg"></i>
+</button>
+<div class="hidden px-6 pb-4">
+<p class="text-gray-600">Evet, özellikle büyük ekran TV'ler için yerinde servis hizmeti sunuyoruz. Servis ücreti mesafeye göre değişiklik gösterebilir. Randevu oluştururken yerinde servis talebinizi belirtmeniz yeterlidir.</p>
+</div>
+</div>
+<div class="border border-gray-200 rounded-lg">
+<button class="flex justify-between items-center w-full px-6 py-4 text-left font-medium text-gray-900 focus:outline-none">
+<span>Tamir edilen ürünlere garanti veriyor musunuz?</span>
+<i class="ri-arrow-down-s-line ri-lg"></i>
+</button>
+<div class="hidden px-6 pb-4">
+<p class="text-gray-600">Evet, tüm tamir işlemlerimiz ve değiştirilen parçalar için 6 ay garanti sunuyoruz. Garanti kapsamı ve koşulları hakkında detaylı bilgiyi servis fişinizde bulabilirsiniz.</p>
+</div>
+</div>
+<div class="border border-gray-200 rounded-lg">
+<button class="flex justify-between items-center w-full px-6 py-4 text-left font-medium text-gray-900 focus:outline-none">
+<span>Hangi ödeme yöntemlerini kabul ediyorsunuz?</span>
+<i class="ri-arrow-down-s-line ri-lg"></i>
+</button>
+<div class="hidden px-6 pb-4">
+<p class="text-gray-600">Nakit, kredi kartı, banka/EFT transferi ve QR kod ile ödeme kabul ediyoruz. Kredi kartına taksit imkanı da sunmaktayız. Ödeme seçenekleri hakkında detaylı bilgi için müşteri temsilcilerimizle görüşebilirsiniz.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
 </section>
 <!-- CTA Section -->
 <section class="py-16 bg-primary">
-  <div class="container mx-auto px-4 text-center">
-    <h2 class="text-3xl font-bold text-white mb-6" data-aos="fade-up">TV'niz Arızalı mı?</h2>
-    <p class="text-white/90 text-lg max-w-2xl mx-auto mb-8" data-aos="fade-up" data-aos-delay="100">Hemen bizi arayın, uzman ekibimiz en kısa sürede sorununuzu çözsün. Ücretsiz keşif ve uygun fiyat garantisi sunuyoruz.</p>
-    <div class="flex flex-col sm:flex-row gap-4 justify-center" data-aos="fade-up" data-aos-delay="200">
-      <a href="tel:05442605757" class="bg-white hover:bg-gray-100 text-primary font-medium py-3 px-8 rounded-button inline-flex items-center justify-center whitespace-nowrap text-lg transition-colors">
-        <div class="w-6 h-6 flex items-center justify-center mr-2">
-          <i class="ri-phone-fill"></i>
-        </div>
-        0544 260 57 57
-      </a>
-      <a href="#appointment" class="bg-secondary hover:bg-secondary/90 text-white font-medium py-3 px-8 rounded-button inline-flex items-center justify-center whitespace-nowrap text-lg transition-colors">
-        <div class="w-6 h-6 flex items-center justify-center mr-2">
-          <i class="ri-calendar-fill"></i>
-        </div>
-        Online Randevu Al
-      </a>
-    </div>
-  </div>
-</section>
-<!-- Contact Section -->
-<section id="contact" class="py-16 bg-white dark:bg-dark-800">
-  <div class="container mx-auto px-4">
-    <div class="max-w-5xl mx-auto">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <div>
-          <h2 class="text-3xl font-bold text-gray-800 dark:text-white mb-6" data-aos="fade-right">İletişim Bilgilerimiz</h2>
-          <p class="text-gray-600 dark:text-gray-300 mb-8" data-aos="fade-right" data-aos-delay="100">Aşağıdaki iletişim bilgilerinden bize ulaşabilir veya formu doldurarak mesaj gönderebilirsiniz.</p>
-          <div class="space-y-4 mb-8">
-            <div class="flex items-start" data-aos="fade-right" data-aos-delay="200">
-              <div class="w-10 h-10 flex items-center justify-center text-primary mr-3 mt-1">
-                <i class="ri-map-pin-fill ri-lg"></i>
-              </div>
-              <div>
-                <h3 class="font-medium text-gray-800 dark:text-white">Adres</h3>
-                <p class="text-gray-600 dark:text-gray-300">Camikebir, Alaaddin Keykubat Cd. No:15, 57000 Sinop Merkez/Sinop, Türkiye</p>
-              </div>
-            </div>
-            <div class="flex items-start" data-aos="fade-right" data-aos-delay="250">
-              <div class="w-10 h-10 flex items-center justify-center text-primary mr-3 mt-1">
-                <i class="ri-phone-fill ri-lg"></i>
-              </div>
-              <div>
-                <h3 class="font-medium text-gray-800 dark:text-white">Telefon</h3>
-                <p class="text-gray-600 dark:text-gray-300">+90 544 260 57 57</p>
-              </div>
-            </div>
-            <div class="flex items-start" data-aos="fade-right" data-aos-delay="300">
-              <div class="w-10 h-10 flex items-center justify-center text-primary mr-3 mt-1">
-                <i class="ri-mail-fill ri-lg"></i>
-              </div>
-              <div>
-                <h3 class="font-medium text-gray-800 dark:text-white">E-posta</h3>
-                <p class="text-gray-600 dark:text-gray-300">info@tesatv.com</p>
-              </div>
-            </div>
-            <div class="flex items-start" data-aos="fade-right" data-aos-delay="350">
-              <div class="w-10 h-10 flex items-center justify-center text-primary mr-3 mt-1">
-                <i class="ri-time-fill ri-lg"></i>
-              </div>
-              <div>
-                <h3 class="font-medium text-gray-800 dark:text-white">Çalışma Saatleri</h3>
-                <p class="text-gray-600 dark:text-gray-300">Pazartesi - Cumartesi: 08:30 - 19:30</p>
-                <p class="text-gray-600 dark:text-gray-300">Pazar: Kapalı</p>
-              </div>
-            </div>
-          </div>
-          <div data-aos="fade-right" data-aos-delay="400">
-            <h3 class="font-medium text-gray-800 dark:text-white mb-3">Bizi Takip Edin</h3>
-            <div class="flex space-x-4">
-              <a href="#" class="w-10 h-10 flex items-center justify-center bg-primary/10 hover:bg-primary/20 text-primary rounded-full transition-colors">
-                <i class="ri-facebook-fill"></i>
-              </a>
-              <a href="#" class="w-10 h-10 flex items-center justify-center bg-primary/10 hover:bg-primary/20 text-primary rounded-full transition-colors">
-                <i class="ri-instagram-fill"></i>
-              </a>
-              <a href="#" class="w-10 h-10 flex items-center justify-center bg-primary/10 hover:bg-primary/20 text-primary rounded-full transition-colors">
-                <i class="ri-twitter-x-fill"></i>
-              </a>
-              <a href="https://wa.me/905442605757 " class="w-10 h-10 flex items-center justify-center bg-primary/10 hover:bg-primary/20 text-primary rounded-full transition-colors">
-                <i class="ri-whatsapp-fill"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="bg-white dark:bg-dark-700 p-6 rounded shadow-md" data-aos="fade-left">
-          <h3 class="text-xl font-semibold mb-4 dark:text-white">Bize Mesaj Gönderin</h3>
-          <form id="contactForm">
-            <div class="mb-4">
-              <label for="name" class="block text-gray-700 dark:text-gray-300 mb-2">Adınız Soyadınız</label>
-              <input type="text" id="name" class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 dark:bg-dark-800 rounded focus:border-primary transition-colors" required>
-            </div>
-            <div class="mb-4">
-              <label for="phone" class="block text-gray-700 dark:text-gray-300 mb-2">Telefon Numaranız</label>
-              <input type="tel" id="phone" class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 dark:bg-dark-800 rounded focus:border-primary transition-colors" required>
-            </div>
-            <div class="mb-4">
-              <label for="email" class="block text-gray-700 dark:text-gray-300 mb-2">E-posta Adresiniz</label>
-              <input type="email" id="email" class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 dark:bg-dark-800 rounded focus:border-primary transition-colors" required>
-            </div>
-            <div class="mb-4">
-              <label for="tv-model" class="block text-gray-700 dark:text-gray-300 mb-2">TV Marka ve Modeli</label>
-              <input type="text" id="tv-model" class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 dark:bg-dark-800 rounded focus:border-primary transition-colors">
-            </div>
-            <div class="mb-4">
-              <label for="message" class="block text-gray-700 dark:text-gray-300 mb-2">Arıza Detayı</label>
-              <textarea id="message" rows="4" class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 dark:bg-dark-800 rounded focus:border-primary transition-colors" required></textarea>
-            </div>
-            <button type="submit" class="w-full bg-primary hover:bg-primary/90 text-white font-medium py-3 px-4 rounded-button whitespace-nowrap transition-colors">Gönder</button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
+<div class="container mx-auto px-4 text-center">
+<h2 class="text-3xl font-bold text-white mb-6">TV'niz Arızalandı mı?</h2>
+<p class="text-white text-lg mb-8 max-w-2xl mx-auto">Profesyonel ekibimiz ve son teknoloji ekipmanlarımızla TV'nizi hızlıca tamir ediyoruz.</p>
+<div class="flex flex-col sm:flex-row justify-center gap-4">
+<a href="#appointment" class="bg-white text-primary px-6 py-3 !rounded-button font-medium hover:bg-gray-100 transition-colors whitespace-nowrap">Hemen Randevu Al</a>
+<a href="tel:+905442605757" class="bg-transparent border-2 border-white text-white px-6 py-3 !rounded-button font-medium hover:bg-white/10 transition-colors whitespace-nowrap">Bizi Arayın</a>
+</div>
+</div>
 </section>
 <!-- Footer -->
-<footer class="bg-gray-800 text-white pt-12 pb-6">
-  <div class="container mx-auto px-4">
-    <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
-      <div>
-        <h3 class="text-xl pacifico mb-4">TesaTV</h3>
-        <p class="text-gray-300 mb-4">15 yıllık deneyimimizle tüm TV markalarında profesyonel tamir ve bakım hizmetleri sunuyoruz.</p>
-        <div class="flex space-x-4">
-          <a href="#" class="text-gray-300 hover:text-white transition-colors">
-            <div class="w-8 h-8 flex items-center justify-center">
-              <i class="ri-facebook-fill"></i>
-            </div>
-          </a>
-          <a href="#" class="text-gray-300 hover:text-white transition-colors">
-            <div class="w-8 h-8 flex items-center justify-center">
-              <i class="ri-instagram-fill"></i>
-            </div>
-          </a>
-          <a href="#" class="text-gray-300 hover:text-white transition-colors">
-            <div class="w-8 h-8 flex items-center justify-center">
-              <i class="ri-twitter-x-fill"></i>
-            </div>
-          </a>
-          <a href="https://wa.me/905442605757 " class="text-gray-300 hover:text-white transition-colors">
-            <div class="w-8 h-8 flex items-center justify-center">
-              <i class="ri-whatsapp-fill"></i>
-            </div>
-          </a>
-        </div>
-      </div>
-      <div>
-        <h3 class="text-lg font-semibold mb-4">Hızlı Erişim</h3>
-        <ul class="space-y-2">
-          <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Anasayfa</a></li>
-          <li><a href="#services" class="text-gray-300 hover:text-white transition-colors">Hizmetlerimiz</a></li>
-          <li><a href="#why-us" class="text-gray-300 hover:text-white transition-colors">Neden Biz</a></li>
-          <li><a href="#appointment" class="text-gray-300 hover:text-white transition-colors">Online Randevu</a></li>
-          <li><a href="#contact" class="text-gray-300 hover:text-white transition-colors">İletişim</a></li>
-        </ul>
-      </div>
-      <div>
-        <h3 class="text-lg font-semibold mb-4">Hizmetlerimiz</h3>
-        <ul class="space-y-2">
-          <li><a href="#" class="text-gray-300 hover:text-white transition-colors">LED Arka Aydınlatma Tamiri</a></li>
-          <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Anakart Onarımı</a></li>
-          <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Panel Değişimi</a></li>
-          <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Smart TV Yazılım Sorunları</a></li>
-          <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Ses ve Görüntü Problemleri</a></li>
-        </ul>
-      </div>
-      <div>
-        <h3 class="text-lg font-semibold mb-4">İletişim</h3>
-        <ul class="space-y-3">
-          <li class="flex">
-            <div class="w-6 h-6 flex items-center justify-center text-gray-300 mr-2">
-              <i class="ri-map-pin-line"></i>
-            </div>
-            <span class="text-gray-300">Camikebir, Alaaddin Keykubat Cd. No:15, 57000 Sinop Merkez/Sinop, Türkiye</span>
-          </li>
-          <li class="flex">
-            <div class="w-6 h-6 flex items-center justify-center text-gray-300 mr-2">
-              <i class="ri-phone-line"></i>
-            </div>
-            <span class="text-gray-300">+90 544 260 57 57</span>
-          </li>
-          <li class="flex">
-            <div class="w-6 h-6 flex items-center justify-center text-gray-300 mr-2">
-              <i class="ri-mail-line"></i>
-            </div>
-            <span class="text-gray-300">info@tesatv.com</span>
-          </li>
-          <li class="flex">
-            <div class="w-6 h-6 flex items-center justify-center text-gray-300 mr-2">
-              <i class="ri-time-line"></i>
-            </div>
-            <span class="text-gray-300">Pazartesi - Cumartesi: 08:30 - 19:30</span>
-          </li>
-        </ul>
-      </div>
-    </div>
-    <div class="border-t border-gray-700 pt-6">
-      <p class="text-center text-gray-400">&copy; 2025 Tesa TV Servisi. Tüm hakları saklıdır.</p>
-    </div>
-  </div>
+<footer class="bg-gray-900 text-white pt-12 pb-6">
+<div class="container mx-auto px-4">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+<div>
+<div class="flex items-center mb-4">
+<img src="https://static.readdy.ai/image/d53e346a01f4c1360ce4287dea3ba429/03d41e9ae333a38fff7278284ade8d35.png" alt="TESA TV Logo" class="h-12 brightness-0 invert">
+</div>
+<p class="text-gray-400 mb-4">Sinop'un en güvenilir ve profesyonel TV tamir servisi. Tüm marka ve modeller için hızlı ve kaliteli çözümler.</p>
+<div class="flex space-x-4">
+<a href="#" class="text-gray-400 hover:text-white transition-colors">
+<div class="w-8 h-8 flex items-center justify-center">
+<i class="ri-facebook-fill ri-lg"></i>
+</div>
+</a>
+<a href="#" class="text-gray-400 hover:text-white transition-colors">
+<div class="w-8 h-8 flex items-center justify-center">
+<i class="ri-instagram-fill ri-lg"></i>
+</div>
+</a>
+<a href="#" class="text-gray-400 hover:text-white transition-colors">
+<div class="w-8 h-8 flex items-center justify-center">
+<i class="ri-twitter-x-fill ri-lg"></i>
+</div>
+</a>
+<a href="#" class="text-gray-400 hover:text-white transition-colors">
+<div class="w-8 h-8 flex items-center justify-center">
+<i class="ri-youtube-fill ri-lg"></i>
+</div>
+</a>
+</div>
+</div>
+<div>
+<h3 class="text-lg font-semibold mb-4">Hızlı Erişim</h3>
+<ul class="space-y-2">
+<li><a href="#" class="text-gray-400 hover:text-white transition-colors">Anasayfa</a></li>
+<li><a href="#services" class="text-gray-400 hover:text-white transition-colors">Hizmetlerimiz</a></li>
+<li><a href="#appointment" class="text-gray-400 hover:text-white transition-colors">Randevu Al</a></li>
+<li><a href="#tracking" class="text-gray-400 hover:text-white transition-colors">Tamir Takibi</a></li>
+<li><a href="#contact" class="text-gray-400 hover:text-white transition-colors">İletişim</a></li>
+</ul>
+</div>
+<div>
+<h3 class="text-lg font-semibold mb-4">Hizmetlerimiz</h3>
+<ul class="space-y-2">
+<li><a href="#" class="text-gray-400 hover:text-white transition-colors">TV Tamiri</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition-colors">Panel Değişimi</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition-colors">Yazılım Güncelleme</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition-colors">Yerinde Servis</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition-colors">Parça Değişimi</a></li>
+</ul>
+</div>
+<div>
+<h3 class="text-lg font-semibold mb-4">İletişim</h3>
+<ul class="space-y-3">
+<li class="flex">
+<div class="w-5 h-5 flex items-center justify-center text-gray-400 mt-1">
+<i class="ri-map-pin-line"></i>
+</div>
+<span class="ml-2 text-gray-400">Camikebir, Alaaddin Keykubat Cd. No:15, 57000 Sinop</span>
+</li>
+<li class="flex">
+<div class="w-5 h-5 flex items-center justify-center text-gray-400 mt-1">
+<i class="ri-phone-line"></i>
+</div>
+<span class="ml-2 text-gray-400">+90 544 260 57 57</span>
+</li>
+<li class="flex">
+<div class="w-5 h-5 flex items-center justify-center text-gray-400 mt-1">
+<i class="ri-mail-line"></i>
+</div>
+<span class="ml-2 text-gray-400">info@tesatv.com</span>
+</li>
+<li class="flex">
+<div class="w-5 h-5 flex items-center justify-center text-gray-400 mt-1">
+<i class="ri-time-line"></i>
+</div>
+<span class="ml-2 text-gray-400">Pazartesi - Cumartesi: 08:30 - 19:30</span>
+</li>
+</ul>
+</div>
+</div>
+<div class="pt-6 border-t border-gray-800 text-center text-gray-400 text-sm">
+<p>© 2025 TESA TV. Tüm hakları saklıdır.</p>
+</div>
+</div>
 </footer>
-<!-- Scripts -->
-<script src="https://cdn.jsdelivr.net/npm/flatpickr "></script>
-<script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/tr.js "></script>
-<script src="https://unpkg.com/aos @2.3.1/dist/aos.js"></script>
-<script>
+<!-- Live Chat Buttons -->
+<div class="fixed bottom-6 right-6 z-50 flex flex-col gap-4">
+<a href="https://wa.me/905442605757" target="_blank" class="bg-[#25D366] text-white w-14 h-14 rounded-full shadow-lg flex items-center justify-center hover:bg-[#22BF5B] transition-colors">
+<i class="ri-whatsapp-line ri-lg"></i>
+</a>
+<button id="liveChatButton" class="bg-primary text-white w-14 h-14 rounded-full shadow-lg flex items-center justify-center hover:bg-primary/90 transition-colors">
+<i class="ri-chat-3-line ri-lg"></i>
+</button>
+<!-- Chat Dialog -->
+<div id="chatDialog" class="hidden fixed bottom-24 right-6 w-[320px] md:w-[380px] bg-white rounded-lg shadow-xl overflow-hidden">
+<div class="p-4 bg-primary text-white flex justify-between items-center">
+<h3 class="font-medium">Canlı Destek</h3>
+<button id="closeChatDialog" class="text-white hover:text-gray-200">
+<i class="ri-close-line ri-lg"></i>
+</button>
+</div>
+<div class="p-4">
+<form id="chatForm" class="space-y-4">
+<div>
+<label class="block text-gray-700 text-sm font-medium mb-2" for="chatName">Adınız Soyadınız</label>
+<input type="text" id="chatName" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary/20" placeholder="Adınızı giriniz" required>
+</div>
+<div>
+<label class="block text-gray-700 text-sm font-medium mb-2" for="chatMessage">Mesajınız</label>
+<textarea id="chatMessage" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary/20" placeholder="Size nasıl yardımcı olabiliriz?" required></textarea>
+</div>
+<button type="submit" class="w-full bg-primary text-white py-3 !rounded-button font-medium hover:bg-primary/90 transition-colors whitespace-nowrap">Mesaj Gönder</button>
+</form>
+<div id="chatSuccess" class="hidden mt-4 p-4 bg-green-50 text-green-700 rounded-md">
+<p class="text-sm">Mesajınız alındı. Müşteri temsilcimiz en kısa sürede size dönüş yapacaktır.</p>
+</div>
+</div>
+</div>
+</div>
+<script id="faqToggle">
 document.addEventListener('DOMContentLoaded', function() {
-  // Initialize AOS animations
-  AOS.init({
-    duration: 800,
-    once: true
-  });
-  // Mobile menu toggle
-  const mobileMenuButton = document.getElementById('mobileMenuButton');
-  const mobileMenu = document.getElementById('mobileMenu');
-  if (mobileMenuButton && mobileMenu) {
-    mobileMenuButton.addEventListener('click', function() {
-      mobileMenu.classList.toggle('hidden');
-    });
-  }
-  // Theme toggle
-  const themeToggle = document.getElementById('themeToggle');
-  if (localStorage.getItem('theme') === 'dark') {
-    document.documentElement.classList.add('dark');
-  }
-  themeToggle.addEventListener('click', () => {
-    document.documentElement.classList.toggle('dark');
-    localStorage.setItem('theme', 
-      document.documentElement.classList.contains('dark') ? 'dark' : 'light');
-  });
-  // Form submission
-  const form = document.getElementById('contactForm');
-  if (form) {
-    form.addEventListener('submit', function(e) {
-      e.preventDefault();
-      alert('Mesajınız gönderildi. En kısa sürede size dönüş yapacağız.');
-      form.reset();
-    });
-  }
-  // Appointment form handling
-  const appointmentForm = document.getElementById('appointmentForm');
-  if (appointmentForm) {
-    appointmentForm.addEventListener('submit', function(e) {
-      e.preventDefault();
-      // Form verilerini topla
-      const formData = {
-        name: document.getElementById('appointment-name').value,
-        phone: document.getElementById('appointment-phone').value,
-        date: document.getElementById('appointment-date').value,
-        time: document.getElementById('appointment-time').value,
-        address: document.getElementById('appointment-address').value,
-        model: document.getElementById('appointment-model').value,
-        issue: document.getElementById('appointment-issue').value
-      };
-      // Burada API çağrısı yapılabilir veya email gönderilebilir
-      alert('Randevunuz başarıyla oluşturuldu. En kısa sürede sizi arayacağız.');
-      appointmentForm.reset();
-    });
-  }
-  // Date picker initialization
-  flatpickr("#appointment-date", {
-    minDate: "today",
-    maxDate: new Date().fp_incr(14), // 2 hafta sonrasına kadar
-    disable: [
-      function(date) {
-        // Pazar günlerini devre dışı bırak
-        return (date.getDay() === 0);
-      }
-    ],
-    locale: "tr"
-  });
-  // FAQ accordion functionality
-  document.querySelectorAll('.border-gray-200 button, .border-gray-700 button').forEach(button => {
-    button.addEventListener('click', () => {
-      const answer = button.nextElementSibling;
-      const icon = button.querySelector('i');
-      answer.classList.toggle('hidden');
-      icon.classList.toggle('rotate-180');
-    });
-  });
-  // Smooth scrolling for anchor links
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-      e.preventDefault();
-      document.querySelector(this.getAttribute('href')).scrollIntoView({
-        behavior: 'smooth'
-      });
-    });
-  });
+const faqButtons = document.querySelectorAll('.border.border-gray-200.rounded-lg button');
+faqButtons.forEach(button => {
+button.addEventListener('click', function() {
+const content = this.nextElementSibling;
+const icon = this.querySelector('i');
+if (content.classList.contains('hidden')) {
+content.classList.remove('hidden');
+icon.classList.remove('ri-arrow-down-s-line');
+icon.classList.add('ri-arrow-up-s-line');
+} else {
+content.classList.add('hidden');
+icon.classList.remove('ri-arrow-up-s-line');
+icon.classList.add('ri-arrow-down-s-line');
+}
+});
+});
 });
 </script>
-<!-- Tawk.to Script -->
-<script type="text/javascript">
-  var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-  (function(){
-    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-    s1.async=true;
-    s1.src='https://embed.tawk.to/YOUR_WIDGET_ID/default ';
-    s1.charset='UTF-8';
-    s1.setAttribute('crossorigin','*');
-    s0.parentNode.insertBefore(s1,s0);
-  })();
-</script>
-<!-- EmbedSocial Reviews Script -->
-<script>(function(d, s, id){var js; if (d.getElementById(id)) {return;} js = d.createElement(s); js.id = id; js.src = "https://embedsocial.com/cdn/ht.js "; d.getElementsByTagName("head")[0].appendChild(js);}(document, "script", "EmbedSocialReviewsScript"));</script>
-<script>
-  // Firebase Yapılandırması
-const firebaseConfig = {
-  apiKey: "AIzaSyCK9cnO9KXCF5gtZSI8O5vSkigPQy11rs0",
-  authDomain: "tesatv-tamirtakip.firebaseapp.com",
-  projectId: "tesatv-tamirtakip",
-  storageBucket: "tesatv-tamirtakip.firebasestorage.app",
-  messagingSenderId: "545625124360",
-  appId: "1:545625124360:web:e7bec3332ce3924eeaebbd",
-  measurementId: "G-SVNF1E49QK"
-};
-  // Firebase Başlatma
-  const app = firebase.initializeApp(firebaseConfig);
-  const analytics = firebase.getAnalytics(app);
-</script>
-<!-- Tamir Takip Sistemi -->
-<section id="repair-tracker" style="padding: 4rem 0; background: #f8fafc;">
-  <div style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
-    <h2 style="text-align: center; font-size: 2rem; margin-bottom: 2rem;">Tamir Durumunu Takip Edin</h2>
-    <div style="background: white; padding: 2rem; border-radius: 8px; max-width: 500px; margin: 0 auto;">
-      <div style="margin-bottom: 1.5rem;">
-        <label style="display: block; margin-bottom: 0.5rem;">Sipariş Numaranız</label>
-        <input type="text" id="repair-id" 
-               style="width: 100%; padding: 0.5rem; border: 1px solid #ddd; border-radius: 4px;" 
-               placeholder="Örn: TESA-1001">
-        <button onclick="loadRepairStatus()" 
-                style="background: #0056b3; color: white; padding: 0.5rem 1rem; border: none; border-radius: 4px; margin-top: 0.5rem;">
-          Sorgula
-        </button>
-      </div>
-      <div id="tracker-status" style="display: none;">
-        <div style="display: grid; gap: 1rem;">
-          <div class="step" data-status="received" style="display: flex; align-items: center; gap: 1rem; padding: 0.75rem; border-radius: 8px;">
-            <div class="step-icon" style="width: 30px; height: 30px; background: #e2e8f0; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold;">1</div>
-            <div class="step-text">Teslim Alındı</div>
-          </div>
-          <!-- Diğer adımlar -->
-          <div class="step" data-status="diagnosis" style="display: flex; align-items: center; gap: 1rem; padding: 0.75rem; border-radius: 8px;">
-            <div class="step-icon" style="width: 30px; height: 30px; background: #e2e8f0; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold;">2</div>
-            <div class="step-text">Teşhis Aşaması</div>
-          </div>
-          <div class="step" data-status="repair" style="display: flex; align-items: center; gap: 1rem; padding: 0.75rem; border-radius: 8px;">
-            <div class="step-icon" style="width: 30px; height: 30px; background: #e2e8f0; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold;">3</div>
-            <div class="step-text">Tamir Ediliyor</div>
-          </div>
-          <div class="step" data-status="completed" style="display: flex; align-items: center; gap: 1rem; padding: 0.75rem; border-radius: 8px;">
-            <div class="step-icon" style="width: 30px; height: 30px; background: #e2e8f0; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold;">4</div>
-            <div class="step-text">Teslim Hazır</div>
-          </div>
-        </div>
-        <div id="technician-notes" style="display: none; background: #f0f9ff; padding: 1rem; border-radius: 8px; margin-top: 1.5rem;">
-          <h4 style="font-weight: bold; margin-bottom: 0.5rem;">Teknisyen Notu:</h4>
-          <p id="notes-text"></p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- Firebase ve Twilio Scriptleri -->
-<script>
-function loadRepairStatus() {
-  const repairId = document.getElementById('repair-id').value.trim();
-  const statusDiv = document.getElementById('tracker-status');
-  const loader = document.getElementById('loader');
-  if (!repairId) {
-    alert("Lütfen sipariş numaranızı giriniz");
-    return;
-  }
-  // Yükleniyor göstergesi
-  loader.style.display = 'block';
-  statusDiv.style.display = 'none';
-  firebase.database().ref('repairs/' + repairId).once('value', (snapshot) => {
-    loader.style.display = 'none';
-    if (!snapshot.exists()) {
-      alert("Bu numarayla kayıt bulunamadı");
-      return;
-    }
-    updateStatusUI(snapshot.val().status, snapshot.val().notes || "");
-    statusDiv.style.display = 'block';
-  }).catch((error) => {
-    loader.style.display = 'none';
-    alert("Veri yüklenirken hata oluştu: " + error.message);
-  });
+<script id="mobileMenu">
+document.addEventListener('DOMContentLoaded', function() {
+const menuButton = document.querySelector('.md\\:hidden button');
+if (menuButton) {
+menuButton.addEventListener('click', function() {
+// Mobile menu functionality would go here
+alert('Mobil menü açılacak');
+});
 }
-function updateStatusUI(status, notes) {
-  // Tüm adımları sıfırla
-  document.querySelectorAll('.step').forEach(step => {
-    const icon = step.querySelector('.step-icon');
-    icon.style.backgroundColor = '#e2e8f0';
-    icon.style.color = '#000';
-  });
-  // Duruma göre renklendirme
-  const steps = {
-    "received": 0,
-    "diagnosis": 1,
-    "repair": 2,
-    "completed": 3
-  };
-  for (let i = 0; i <= steps[status]; i++) {
-    const step = document.querySelectorAll('.step')[i];
-    const icon = step.querySelector('.step-icon');
-    icon.style.backgroundColor = i === steps[status] ? '#0056b3' : '#10b981';
-    icon.style.color = 'white';
-  }
-  // Notları göster
-  if (notes) {
-    document.getElementById('notes-text').textContent = notes;
-    document.getElementById('technician-notes').style.display = 'block';
-  } else {
-    document.getElementById('technician-notes').style.display = 'none';
-  }
-  // Panel göster
-  document.getElementById('tracker-status').style.display = 'block';
-}
+});
+</script>
+<script id="chatDialog">
+document.addEventListener('DOMContentLoaded', function() {
+const liveChatButton = document.getElementById('liveChatButton');
+const chatDialog = document.getElementById('chatDialog');
+const closeChatDialog = document.getElementById('closeChatDialog');
+const chatForm = document.getElementById('chatForm');
+const chatSuccess = document.getElementById('chatSuccess');
+const pickupRequestBtn = document.getElementById('pickupRequestBtn');
+pickupRequestBtn.addEventListener('click', function() {
+const pickupDialog = document.createElement('div');
+pickupDialog.className = 'fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50';
+pickupDialog.innerHTML = `
+<div class="bg-white rounded-lg shadow-xl w-[90%] max-w-md p-6">
+<div class="flex justify-between items-center mb-4">
+<h3 class="text-xl font-semibold text-gray-900">TV Alım Talebi</h3>
+<button class="text-gray-400 hover:text-gray-500" onclick="this.closest('.fixed').remove()">
+<i class="ri-close-line ri-lg"></i>
+</button>
+</div>
+<form id="pickupForm" class="space-y-4">
+<div>
+<label class="block text-gray-700 text-sm font-medium mb-2">Ad Soyad</label>
+<input type="text" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary/20" required>
+</div>
+<div>
+<label class="block text-gray-700 text-sm font-medium mb-2">Telefon</label>
+<input type="tel" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary/20" required>
+</div>
+<div>
+<label class="block text-gray-700 text-sm font-medium mb-2">Adres</label>
+<textarea class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary/20" rows="3" required></textarea>
+</div>
+<div>
+<label class="block text-gray-700 text-sm font-medium mb-2">TV Markası ve Modeli</label>
+<input type="text" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary/20" required>
+</div>
+<div>
+<label class="block text-gray-700 text-sm font-medium mb-2">Arıza Açıklaması</label>
+<textarea class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary/20" rows="3" required></textarea>
+</div>
+<button type="submit" class="w-full bg-primary text-white py-3 !rounded-button font-medium hover:bg-primary/90 transition-colors whitespace-nowrap">
+Talep Gönder
+</button>
+</form>
+</div>
+`;
+document.body.appendChild(pickupDialog);
+const pickupForm = document.getElementById('pickupForm');
+pickupForm.addEventListener('submit', function(e) {
+e.preventDefault();
+const successMessage = document.createElement('div');
+successMessage.className = 'bg-green-50 text-green-700 p-4 rounded-md mt-4';
+successMessage.textContent = 'Talebiniz alınmıştır. En kısa sürede sizinle iletişime geçeceğiz.';
+pickupForm.replaceWith(successMessage);
+setTimeout(() => {
+pickupDialog.remove();
+}, 2000);
+});
+});
+liveChatButton.addEventListener('click', function() {
+chatDialog.classList.remove('hidden');
+chatSuccess.classList.add('hidden');
+});
+closeChatDialog.addEventListener('click', function() {
+chatDialog.classList.add('hidden');
+chatForm.reset();
+});
+chatForm.addEventListener('submit', function(e) {
+e.preventDefault();
+chatForm.style.display = 'none';
+chatSuccess.classList.remove('hidden');
+setTimeout(() => {
+chatDialog.classList.add('hidden');
+chatForm.style.display = 'block';
+chatForm.reset();
+}, 3000);
+});
+});
 </script>
 </body>
-  <!-- Tamir Takip Formu (Zaten var olan kodu bu şekilde güncelleyin) -->
-<div class="max-w-md mx-auto bg-white dark:bg-dark-700 p-6 rounded shadow-md" data-aos="fade-up">
-  <form id="trackingForm">
-    <div class="mb-4">
-      <label for="repairId" class="block text-gray-700 dark:text-gray-300 mb-2">Servis Numarası veya Telefon Numarası</label>
-      <input type="text" id="repairId" class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 dark:bg-dark-800 rounded focus:border-primary transition-colors" required placeholder="Örnek: 123456 veya 5442605757">
-    </div>
-    <button type="submit" class="w-full bg-primary hover:bg-primary/90 text-white font-medium py-3 px-4 rounded-button whitespace-nowrap transition-colors">Durumu Kontrol Et</button>
-  </form>
-  <div id="trackingResult" class="mt-6 text-gray-700 dark:text-gray-300 hidden">
-    <h3 class="font-semibold mb-2">Tamir Durumu:</h3>
-    <p id="trackingStatus">Beklemede...</p>
-  </div>
-  <div id="loader" class="mt-4 text-center hidden">
-    <div class="inline-block animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-primary"></div>
-    <p class="mt-2">Yükleniyor...</p>
-  </div>
-</div>
-
-<!-- Firebase ve Takip Sistemi JavaScript Kodları -->
-<script>
-// Firebase yapılandırma (Zaten var olan kodu bu şekilde güncelleyin)
-const firebaseConfig = {
-  apiKey: "AIzaSyCK9cnO9KXCF5gtZSI8O5vSkigPQy11rs0",
-  authDomain: "tesatv-tamirtakip.firebaseapp.com",
-  projectId: "tesatv-tamirtakip",
-  storageBucket: "tesatv-tamirtakip.appspot.com",
-  messagingSenderId: "545625124360",
-  appId: "1:545625124360:web:e7bec3332ce3924eeaebbd",
-  measurementId: "G-SVNF1E49QK"
-};
-
-// Firebase başlatma
-const app = firebase.initializeApp(firebaseConfig);
-const database = firebase.database();
-
-// Form gönderimini işleme
-document.getElementById('trackingForm').addEventListener('submit', function(e) {
-  e.preventDefault(); // Sayfanın yenilenmesini engelle
-  const repairId = document.getElementById('repairId').value.trim();
-  
-  if (!repairId) {
-    alert("Lütfen servis numarası giriniz");
-    return;
-  }
-
-  // Yükleniyor göstergesini göster
-  document.getElementById('loader').classList.remove('hidden');
-  document.getElementById('trackingResult').classList.add('hidden');
-
-  // Firebase'den veriyi çek
-  database.ref('repairs/' + repairId).once('value')
-    .then((snapshot) => {
-      const trackingResult = document.getElementById('trackingResult');
-      const trackingStatus = document.getElementById('trackingStatus');
-      
-      if (snapshot.exists()) {
-        const repairData = snapshot.val();
-        trackingStatus.innerHTML = `
-          <strong>Durum:</strong> ${repairData.status}<br>
-          <strong>Not:</strong> ${repairData.notes || "Not bulunmamaktadır"}<br>
-          <strong>Tarih:</strong> ${repairData.date || "Belirtilmemiş"}
-        `;
-        trackingResult.classList.remove('hidden');
-      } else {
-        trackingStatus.textContent = "Bu servis numarasıyla kayıt bulunamadı";
-        trackingResult.classList.remove('hidden');
-      }
-    })
-    .catch((error) => {
-      alert("Hata oluştu: " + error.message);
-    })
-    .finally(() => {
-      document.getElementById('loader').classList.add('hidden');
-    });
-});
-</script>
 </html>
